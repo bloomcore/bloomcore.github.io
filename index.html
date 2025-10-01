@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bloomcore - Full-stack AI Civil Engineering</title>
   <style>
-    /* (same CSS as before, no changes) */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -71,6 +70,15 @@
                  cursor:pointer; opacity:0.7; transition:opacity 0.3s; }
     .close-btn:hover { opacity:1; }
     .modal h2 { font-size:1.8rem; margin-bottom:1.5rem; color:#ff9a56; }
+    .reviewer-benefits { margin-top: 2rem; opacity: 0; animation: fadeInUp 1s ease 2s forwards; }
+    .benefits-title { font-size: 1.3rem; font-weight: 700; color: #ff9a56; margin-bottom: 1.5rem; }
+    .benefits-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .benefit-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem; background: rgba(255, 154, 86, 0.05);
+                    border-left: 3px solid #ff9a56; border-radius: 8px; transition: all 0.3s ease; }
+    .benefit-item:hover { background: rgba(255, 154, 86, 0.1); transform: translateX(5px); }
+    .benefit-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .benefit-item p { font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.85); margin: 0; }
+    .benefit-item strong { color: white; font-weight: 600; }
     @media(max-width:1024px){ .container{grid-template-columns:1fr; grid-template-rows:auto 1fr; padding:2rem; gap:2rem;}
       .content-side{text-align:center; padding-right:0;} .video-side{padding-left:0;} .cta-buttons{justify-content:center;} }
     @media(max-width:768px){ .container{padding:1rem;} .company-name{font-size:1.5rem;} .tagline{font-size:1.2rem;}
@@ -93,6 +101,25 @@
       <div class="cta-buttons">
         <a href="#" class="btn btn-primary" onclick="openModal('demoModal')">Request a Demo</a>
         <a href="#" class="btn btn-secondary" onclick="openModal('reviewerModal')">Become a Human Reviewer</a>
+      </div>
+
+      <!-- Why Become a Human Reviewer Section -->
+      <div class="reviewer-benefits">
+        <h3 class="benefits-title">Why Become a Human Reviewer?</h3>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <span class="benefit-icon">🚀</span>
+            <p><strong>Shape the Future:</strong> AI agents will fundamentally transform civil engineering—be at the forefront of this revolution</p>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🤝</span>
+            <p><strong>New Paradigm:</strong> The future of work is human-AI collaboration, not replacement—master this emerging skillset now</p>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">⚡</span>
+            <p><strong>Next-Gen Expertise:</strong> Tomorrow's top structural engineers will excel at rapidly evaluating and refining AI-generated designs</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="video-side">
@@ -167,4 +194,3 @@
   </script>
 </body>
 </html>
-
