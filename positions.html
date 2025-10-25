@@ -65,8 +65,21 @@
     .subtitle {
       font-size: 1.2rem;
       color: rgba(255, 255, 255, 0.7);
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .ai-badge {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff9a56, #ff6b35);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      letter-spacing: 0.5px;
     }
     
     .positions-grid {
@@ -141,24 +154,24 @@
       margin-bottom: 1.5rem;
     }
     
-    .requirements {
+    .capabilities {
       margin-bottom: 1.5rem;
     }
     
-    .requirements h3 {
+    .capabilities h3 {
       font-size: 1.1rem;
       color: white;
       margin-bottom: 1rem;
     }
     
-    .requirements ul {
+    .capabilities ul {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
     
-    .requirements li {
+    .capabilities li {
       display: flex;
       align-items: flex-start;
       gap: 0.75rem;
@@ -166,10 +179,8 @@
       line-height: 1.6;
     }
     
-    .requirements li::before {
-      content: "→";
-      color: #ff9a56;
-      font-weight: bold;
+    .capabilities li::before {
+      content: "🤖";
       flex-shrink: 0;
     }
     
@@ -214,141 +225,142 @@
         <img src="Bloomcore_logo.png" class="logo-img" alt="Bloomcore Logo">
         <h1 class="company-name">BLOOMCORE</h1>
       </div>
-      <h1>Open Positions</h1>
-      <p class="subtitle">Join us in building the future of AI-powered civil engineering</p>
+      <h1>Open AI Agent Positions</h1>
+      <p class="subtitle">We're building and hiring specialized AI agents to revolutionize civil engineering. Each agent brings autonomous expertise to critical infrastructure design domains.</p>
+      <span class="ai-badge">🤖 AI AGENTS ONLY</span>
     </div>
     
     <div class="positions-grid">
-      <!-- Position 1: AI/ML Engineer -->
+      <!-- Position 1: AI Architect Agent -->
       <div class="position-card">
         <div class="position-header">
           <div>
-            <h2 class="position-title">AI/ML Engineer</h2>
+            <h2 class="position-title">AI Architectural design Agent</h2>
           </div>
-          <span class="position-badge">Full-Time</span>
+          <span class="position-badge">Autonomous</span>
         </div>
         
         <div class="position-meta">
-          <div class="meta-item">📍 Remote / Hybrid</div>
-          <div class="meta-item">💼 Engineering</div>
-          <div class="meta-item">⏰ Posted 2 days ago</div>
+          <div class="meta-item">🏗️ Architecture & Design</div>
+          <div class="meta-item">⚡ Real-time Processing</div>
         </div>
         
         <p class="position-description">
-          We're looking for an exceptional AI/ML Engineer to develop and train our autonomous civil engineering agents. You'll work on cutting-edge problems at the intersection of AI and infrastructure design.
+          Autonomous AI agent specializing in architectural design for buildings and structures. This agent will generate comprehensive building designs, floor plans, elevations, and 3D models while ensuring compliance with building codes and architectural best practices.
         </p>
         
-        <div class="requirements">
-          <h3>Key Requirements:</h3>
+        <div class="capabilities">
+          <h3>Core Capabilities:</h3>
           <ul>
-            <li>5+ years experience in machine learning and AI systems</li>
-            <li>Strong background in deep learning frameworks (PyTorch, TensorFlow)</li>
-            <li>Experience with LLMs and agent-based systems</li>
-            <li>Proficiency in Python and software engineering best practices</li>
-            <li>Strong problem-solving and research skills</li>
+            <li>Generate complete architectural designs from project requirements</li>
+            <li>Optimize building layouts for functionality, aesthetics, and efficiency</li>
+            <li>Ensure compliance with local building codes and zoning regulations</li>
+            <li>Produce detailed construction drawings and specifications</li>
+            <li>Integrate sustainable design principles and energy efficiency</li>
+            <li>Collaborate with other AI agents for structural and MEP integration</li>
           </ul>
         </div>
         
-        <a href="https://forms.gle/your-form-link" class="apply-btn">Apply Now</a>
+        <a href="https://forms.gle/your-form-link" class="apply-btn">Learn More</a>
       </div>
       
-      <!-- Position 2: Civil Engineer (AI Specialist) -->
+      <!-- Position 2: AI Geotechnical Engineer Agent -->
       <div class="position-card">
         <div class="position-header">
           <div>
-            <h2 class="position-title">Civil Engineer (AI Specialist)</h2>
+            <h2 class="position-title">AI Geotechnical Engineering Agent</h2>
           </div>
-          <span class="position-badge">Full-Time</span>
+          <span class="position-badge">Autonomous</span>
         </div>
         
         <div class="position-meta">
-          <div class="meta-item">📍 Remote / Hybrid</div>
-          <div class="meta-item">💼 Engineering</div>
-          <div class="meta-item">⏰ Posted 5 days ago</div>
+          <div class="meta-item">🌍 Soil & Foundation Analysis</div>
+          <div class="meta-item">⚡ Real-time Processing</div>
         </div>
         
         <p class="position-description">
-          Bridge the gap between traditional civil engineering and AI. Help us encode civil engineering knowledge into our AI systems and validate AI-generated designs.
+          Specialized AI agent for geotechnical engineering analysis and foundation design. This agent will analyze soil conditions, assess ground stability, and design optimal foundation systems for various infrastructure projects.
         </p>
         
-        <div class="requirements">
-          <h3>Key Requirements:</h3>
+        <div class="capabilities">
+          <h3>Core Capabilities:</h3>
           <ul>
-            <li>Licensed Professional Engineer (PE) or equivalent</li>
-            <li>7+ years experience in structural or civil engineering design</li>
-            <li>Interest in AI/ML and computational design</li>
-            <li>Experience with CAD and BIM software</li>
-            <li>Strong understanding of building codes and regulations</li>
+            <li>Analyze soil properties and subsurface conditions from geotechnical reports</li>
+            <li>Design foundation systems (shallow, deep, pile foundations)</li>
+            <li>Assess slope stability and earthwork requirements</li>
+            <li>Evaluate bearing capacity and settlement predictions</li>
+            <li>Recommend ground improvement techniques when needed</li>
+            <li>Generate geotechnical engineering reports and recommendations</li>
           </ul>
         </div>
         
-        <a href="https://forms.gle/your-form-link" class="apply-btn">Apply Now</a>
+        <a href="https://forms.gle/your-form-link" class="apply-btn">Learn More</a>
       </div>
       
-      <!-- Position 3: Product Manager -->
+      <!-- Position 3: AI Bridge Engineer Agent -->
       <div class="position-card">
         <div class="position-header">
           <div>
-            <h2 class="position-title">Product Manager</h2>
+            <h2 class="position-title">AI Bridge Engineering Agent</h2>
           </div>
-          <span class="position-badge">Full-Time</span>
+          <span class="position-badge">Autonomous</span>
         </div>
         
         <div class="position-meta">
-          <div class="meta-item">📍 Remote / Hybrid</div>
-          <div class="meta-item">💼 Product</div>
-          <div class="meta-item">⏰ Posted 1 week ago</div>
+          <div class="meta-item">🌉 Bridge Design & Analysis</div>
+          <div class="meta-item">⚡ Real-time Processing</div>
         </div>
         
         <p class="position-description">
-          Define the product vision and roadmap for our AI civil engineering platform. Work closely with engineers, designers, and customers to build products that revolutionize infrastructure design.
+          Expert AI agent dedicated to bridge engineering and design. This agent will design bridges of all types—from simple pedestrian bridges to complex highway overpasses—ensuring structural integrity, safety, and optimal performance.
         </p>
         
-        <div class="requirements">
-          <h3>Key Requirements:</h3>
+        <div class="capabilities">
+          <h3>Core Capabilities:</h3>
           <ul>
-            <li>5+ years of product management experience in B2B SaaS or technical products</li>
-            <li>Background in engineering or construction industry preferred</li>
-            <li>Experience with AI/ML products is a plus</li>
-            <li>Strong analytical and strategic thinking skills</li>
-            <li>Excellent communication and stakeholder management abilities</li>
+            <li>Design various bridge types (beam, truss, arch, suspension, cable-stayed)</li>
+            <li>Perform structural analysis and load calculations (dead, live, wind, seismic)</li>
+            <li>Select optimal materials and cross-sections for bridge components</li>
+            <li>Ensure compliance with AASHTO and other bridge design standards</li>
+            <li>Generate detailed bridge plans, elevations, and construction drawings</li>
+            <li>Optimize designs for constructability, cost, and lifecycle performance</li>
           </ul>
         </div>
         
-        <a href="https://forms.gle/your-form-link" class="apply-btn">Apply Now</a>
+        <a href="https://forms.gle/your-form-link" class="apply-btn">Learn More</a>
       </div>
       
-      <!-- Position 4: Human Reviewer (Contract) -->
+      <!-- Position 4: AI Voice Secretary Agent -->
       <div class="position-card">
         <div class="position-header">
           <div>
-            <h2 class="position-title">Human Reviewer</h2>
+            <h2 class="position-title">AI Voice Secretary</h2>
           </div>
-          <span class="position-badge">Contract</span>
+          <span class="position-badge">Autonomous</span>
         </div>
         
         <div class="position-meta">
-          <div class="meta-item">📍 Remote</div>
-          <div class="meta-item">💼 Quality Assurance</div>
-          <div class="meta-item">⏰ Posted 3 days ago</div>
+          <div class="meta-item">🎙️ Voice Interface & Communication</div>
+          <div class="meta-item">⚡ Real-time Processing</div>
         </div>
         
         <p class="position-description">
-          Review and validate AI-generated civil engineering designs. Perfect for experienced civil engineers looking for flexible, part-time work while shaping the future of the industry.
+          Intelligent conversational AI agent that serves as the primary communication bridge between clients and our internal engineering AI agents. This agent manages all client conversations, translates requirements into technical specifications, and relays feedback bidirectionally to ensure seamless collaboration.
         </p>
         
-        <div class="requirements">
-          <h3>Key Requirements:</h3>
+        <div class="capabilities">
+          <h3>Core Capabilities:</h3>
           <ul>
-            <li>Licensed PE or equivalent professional certification</li>
-            <li>10+ years of practical civil engineering experience</li>
-            <li>Deep knowledge of building codes and design standards</li>
-            <li>Strong attention to detail and analytical skills</li>
-            <li>Flexible schedule - work on your own time</li>
+            <li>Manage voice and text conversations between clients and internal AI engineering agents</li>
+            <li>Translate client requirements into technical specifications for engineering agents</li>
+            <li>Relay design outputs and recommendations from AI agents back to clients in clear language</li>
+            <li>Collect and communicate client feedback to appropriate engineering agents for revisions</li>
+            <li>Maintain conversation context and project history across multiple interactions</li>
+            <li>Ensure smooth, professional communication while handling technical civil engineering concepts</li>
           </ul>
         </div>
         
-        <a href="https://forms.gle/KHPfHjWRs8JMPGhw8" class="apply-btn">Apply Now</a>
+        <a href="https://forms.gle/your-form-link" class="apply-btn">Learn More</a>
       </div>
     </div>
   </div>
