@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Bloomcore Labs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* FULL SCREEN TERMINAL LAYOUT */
+        body {
+            background-color: #000;
+            background-image: radial-gradient(circle at 50% 50%, #111 1px, transparent 1px);
+            background-size: 30px 30px;
+            height: 100vh; width: 100vw;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            margin: 0; overflow: hidden;
+        }
+        .back-link {
+            position: absolute; top: 30px; left: 30px;
+            color: var(--text-gray); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;
+            text-decoration: none; display: flex; align-items: center; gap: 10px; transition: color 0.3s; z-index: 100;
+        }
+        .back-link:hover { color: var(--brand-yellow); }
+        #static-chat-window {
+            width: 90%; max-width: 900px; height: 80vh;
+            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px);
+            border: 2px solid #FFD700; box-shadow: 0 0 100px rgba(255, 215, 0, 0.1);
+            border-radius: 12px; display: flex; flex-direction: column;
+            font-family: 'JetBrains Mono', monospace; overflow: hidden; position: relative;
+        }
+        .chat-header {
+            background: #FFD700; padding: 20px; display: flex; justify-content: space-between; align-items: center;
+            color: #000; font-weight: 700; font-size: 1rem; letter-spacing: 1px;
+        }
+        .status-dot { width: 10px; height: 10px; background-color: #000; border-radius: 50%; display: inline-block; margin-right: 10px; animation: pulse 2s infinite; }
+        #chat-history { flex: 1; padding: 40px; overflow-y: auto; position: relative; }
+        #chat-history::before {
+            content: " "; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 2px; pointer-events: none;
+        }
+        .message { margin-bottom: 20px; padding: 15px 20px; border-radius: 6px; font-size: 1rem; line-height: 1.6; max-width: 80%; position: relative; z-index: 2; }
+        .agent { background: #1a1a1a; border-left: 4px solid #00E676; color: #e0e0e0; align-self: flex-start; }
+        .user { background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.3); color: #FFD700; margin-left: auto; text-align: right; }
+        .input-area { padding: 20px; background: #000; border-top: 1px solid #333; display: flex; gap: 15px; }
+        #chat-input { flex: 1; background: #111; border: 1px solid #333; color: white; padding: 15px; font-family: 'JetBrains Mono', monospace; font-size: 1rem; border-radius: 4px; outline: none; }
+        #chat-input:focus { border-color: #FFD700; }
+        #send-btn { background: #FFD700; color: black; border: none; padding: 0 30px; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 1rem; transition: background 0.2s; }
+        #send-btn:hover { background: #e6c200; }
+        .action-btn { display: inline-block; margin-top: 15px; padding: 10px 16px; background: #FFD700; color: black; border: none; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; border-radius: 4px; transition: transform 0.1s; text-decoration: none; }
+        .action-btn:hover { transform: translateY(-2px); }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← RETURN TO MAIN SITE</a>
+
+    <div id="static-chat-window">
+        <div class="chat-header">
+            <div id="header-title"><span class="status-dot"></span>SEBASTIAN // CUSTOMER RELATIONS</div>
+            <div style="font-size: 0.8rem; font-weight: 400;">SYNCED_SESSION: ACTIVE</div>
+        </div>
+        
+        <div id="chat-history"></div>
+        
+        <div class="input-area">
+            <input type="text" id="chat-input" placeholder="Type your inquiry..." autocomplete="off">
+            <button id="send-btn">SEND</button>
+        </div>
+    </div>
+
+    <script src="env.js"></script>
+    <script src="chat-widget.js"></script> <!-- The widget script will auto-detect it's on contact page and disable the popup, but we need the inline script below for the static logic -->
+    
+    <script>
+        (function() {
+            const STORAGE_KEY = 'bloomcore_unified_history';
+
+            const GEMINI_API_KEY = (() => {
+                if (typeof window !== 'undefined' && window.BC_ENV && window.BC_ENV.GEMINI_API_KEY) {
+                    return window.BC_ENV.GEMINI_API_KEY;
+                }
+                return ""; 
+            })();
+
+            // 1. LLM Context
+            const systemPrompt = `You are 'Sebastian', Customer Relations Agent. TONE: Professional.`;
+
+            // 2. OFFLINE KNOWLEDGE DB
+            const FALLBACK_DB = [
+                { keywords: ['ceo', 'kwabena', 'atobra'], response: "> Kwabena Atobra is our CEO & Co-Founder. <<OPEN:about.html>>" },
+                { keywords: ['cto', 'eugene'], response: "> Eugene Zhukov is our CTO & Co-Founder. <<OPEN:about.html>>" },
+                { keywords: ['polaris', 'structural'], response: "> Polaris-1 (v1.2) is our Structural Engineering Agent. <<OPEN:technology.html>>" },
+                { keywords: ['vulcan', 'geo'], response: "> Vulcan (v0.4 Beta) is our Geotechnical Agent. <<OPEN:technology.html>>" },
+                { keywords: ['achilles', 'pm'], response: "> Achilles is our Project Management Agent (Roadmap Q2 2026). <<OPEN:technology.html>>" },
+                { keywords: ['manifesto', 'mission', 'broken'], response: "> We believe the industry is broken. Our mission is Human-Agent Symbiosis. <<OPEN:manifesto.html>>" },
+                { keywords: ['demo', 'try', 'app'], response: "> Access sandbox: <a href='https://app.bloomcorelabs.com' style='color:#FFD700'>app.bloomcorelabs.com</a>" },
+                { keywords: ['job', 'career', 'hiring'], response: "> We are hiring AI Engineers and Eurocode Experts. <<OPEN:careers.html>>" },
+                { keywords: ['contact', 'email'], response: "> Email: kwabena@bloomcorelabs.com" }
+            ];
+
+            const headerTitle = document.getElementById('header-title');
+            const historyEl = document.getElementById('chat-history');
+            const inputEl = document.getElementById('chat-input');
+            const sendBtn = document.getElementById('send-btn');
+            
+            let chatHistory = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+            if(GEMINI_API_KEY) {
+                headerTitle.innerHTML = '<span class="status-dot" style="background-color:#00E676; box-shadow:0 0 5px #00E676;"></span>SEBASTIAN // ONLINE';
+            } else {
+                headerTitle.innerHTML = '<span class="status-dot" style="background-color:#FF3333; box-shadow:0 0 5px #FF3333;"></span>SEBASTIAN // OFFLINE';
+            }
+
+            renderHistory();
+
+            function renderHistory() {
+                historyEl.innerHTML = '';
+                if (chatHistory.length === 0) {
+                    addMessageToUI("agent", "> CONNECTION ESTABLISHED.<br>> Hello. I am Sebastian.<br>> I am synced across the site.");
+                } else {
+                    chatHistory.forEach(msg => addMessageToUI(msg.sender, msg.text, false));
+                }
+            }
+
+            function addMessageToUI(sender, text, save = true) {
+                const navMatch = text.match(/<<OPEN:(.*?)>>/);
+                let navButtonHTML = '';
+                if (navMatch) {
+                    const targetPage = navMatch[1]; text = text.replace(navMatch[0], ''); 
+                    navButtonHTML = `<br><a href="${targetPage}" class="action-btn">ACCESS PAGE ➜</a>`;
+                }
+                const div = document.createElement('div'); div.className = `message ${sender}`; div.innerHTML = text + navButtonHTML;
+                historyEl.appendChild(div); historyEl.scrollTop = historyEl.scrollHeight;
+                if (save) { chatHistory.push({ sender, text }); localStorage.setItem(STORAGE_KEY, JSON.stringify(chatHistory)); }
+            }
+
+            async function handleSend() {
+                const text = inputEl.value.trim();
+                if (!text) return;
+                addMessageToUI('user', text);
+                inputEl.value = '';
+                const loadingDiv = document.createElement('div'); loadingDiv.className = 'message agent'; loadingDiv.innerText = '> Thinking...'; loadingDiv.id = 'loading-msg'; historyEl.appendChild(loadingDiv); historyEl.scrollTop = historyEl.scrollHeight;
+
+                let response = "";
+                if (GEMINI_API_KEY) {
+                    try {
+                        const recentHistory = chatHistory.slice(-10).map(msg => ({ role: msg.sender === 'user' ? 'user' : 'model', parts: [{ text: msg.text }] }));
+                        const payload = { system_instruction: { parts: [{ text: systemPrompt }] }, contents: [...recentHistory, { role: "user", parts: [{ text: text }] }] };
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+                        const apiRes = await fetch(apiUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+                        const data = await apiRes.json();
+                        if (data.candidates && data.candidates[0].content) {
+                            response = data.candidates[0].content.parts[0].text.replace(/\n/g, '<br>');
+                        } else { throw new Error("API Error"); }
+                    } catch (e) { response = generateSmartFallback(text); }
+                } else {
+                    await new Promise(r => setTimeout(r, 800)); response = generateSmartFallback(text);
+                }
+                document.getElementById('loading-msg').remove(); addMessageToUI('agent', response);
+            }
+
+            function generateSmartFallback(input) {
+                const lowerInput = input.toLowerCase();
+                for (const entry of FALLBACK_DB) {
+                    if (entry.keywords.some(keyword => lowerInput.includes(keyword))) return entry.response;
+                }
+                return "> Input received. I am in Offline Mode.<br>> I can assist with: Technology, Team, Manifesto, or Careers.";
+            }
+
+            sendBtn.addEventListener('click', handleSend);
+            inputEl.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+        })();
+    </script>
+</body>
+</html>

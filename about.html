@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Bloomcore Labs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* GRID LAYOUT UPDATE: Max 3 items per row */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Forces 3 columns */
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+            }
+        }
+        @media (max-width: 600px) {
+            .team-grid {
+                grid-template-columns: 1fr; /* 1 column on mobile */
+            }
+        }
+
+        /* Agent Card Styles */
+        .agent-card {
+            border: 1px solid #333;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0,0,0,0) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: block; 
+            text-decoration: none; 
+            color: inherit;
+        }
+
+        .agent-card:hover {
+            border-color: var(--brand-green);
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
+
+        .agent-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: grayscale(100%) contrast(1.2);
+            margin-bottom: 15px;
+            border: 1px solid #222;
+        }
+        
+        .agent-card:hover img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .status-active {
+            background: rgba(0, 230, 118, 0.1);
+            color: #00E676;
+            border: 1px solid #00E676;
+        }
+
+        .status-dev {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border: 1px solid #FFD700;
+        }
+
+        .section-title-bar {
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        /* Hover effect for clickable agents */
+        .click-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: var(--brand-yellow);
+            font-weight: bold;
+            z-index: 10;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .agent-card:hover .click-hint {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="index.html">BLOOMCORE <span class="text-white">LABS</span></a></div>
+        <div class="nav-links">
+            <a href="manifesto.html">Manifesto</a>
+            <a href="technology.html">Technology</a>
+            <a href="about.html" style="color:var(--brand-yellow)">About</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html" class="btn-nav">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero" style="height: 50vh;">
+        <div class="hero-overlay"></div>
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2500&auto=format&fit=crop" alt="Team working" class="hero-bg">
+        <div class="hero-content">
+            <h1>The Hybrid Workforce</h1>
+            <p>We are a team of human experts and autonomous agents working in symbiosis.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 1: HUMAN LEADERSHIP -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title-bar">
+                <h3>Human Leadership</h3>
+                <span class="text-gray text-sm">Strategy & Review</span>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Kwabena -->
+                <div class="team-member">
+                    <img src="kobby.png" alt="Kwabena Atobra">
+                    <div class="team-name">Kwabena Atobra</div>
+                    <div class="team-role">CEO & Co-Founder</div>
+                    <p class="text-gray text-xs mt-4">Engineer & FEA Specialist. MSc ETH Zurich. PhD Candidate University of Helsinki.</p>
+                </div>
+                <!-- Eugene -->
+                <div class="team-member">
+                    <img src="eugene.png" alt="Eugene Zhukov">
+                    <div class="team-name">Eugene Zhukov</div>
+                    <div class="team-role">CTO & Co-Founder</div>
+                    <p class="text-gray text-xs mt-4">20+ years in software engineering (Airbus, Nokia, Ericsson, F-secure). MBA Henley Business School.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: TECHNICAL AGENTS -->
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-title-bar">
+                <h3>Technical Division (The Core)</h3>
+                <span class="text-gray text-sm">Design & Calculation</span>
+            </div>
+
+            <div class="team-grid">
+                
+                <!-- Polaris (CLICKABLE -> APP) -->
+                <a href="https://app.bloomcorelabs.com" target="_blank" class="agent-card">
+                    <span class="click-hint">↗ LAUNCH SANDBOX</span>
+                    <div class="status-badge status-active">v1.2 // ACTIVE</div>
+                    <img src="https://images.unsplash.com/photo-1517524285303-d6fc683dddf8?q=80&w=800&auto=format&fit=crop" alt="Polaris Agent">
+                    <div class="team-name">Polaris</div>
+                    <div class="team-role">Structural Engineering Agent</div>
+                    <p class="text-gray text-xs mt-3">Specializes in generative geometry, load calculation, and Eurocode/AISC compliance verification.</p>
+                </a>
+
+                <!-- Achilles (NEW ADDITION) -->
+                <div class="agent-card">
+                    <div class="status-badge status-dev">ROADMAP Q2 2026</div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Achilles Agent">
+                    <div class="team-name">Achilles</div>
+                    <div class="team-role">Project Management Agent</div>
+                    <p class="text-gray text-xs mt-3">Orchestrates workflows, optimizes critical paths, and predicts timeline risks using historical data analysis.</p>
+                </div>
+
+                <!-- Vulcan -->
+                <div class="agent-card">
+                    <div class="status-badge status-dev">v0.4 // BETA</div>
+                    <img src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?q=80&w=800&auto=format&fit=crop" alt="Vulcan Agent">
+                    <div class="team-name">Vulcan</div>
+                    <div class="team-role">Geotechnical Engineering Agent</div>
+                    <p class="text-gray text-xs mt-3">Analyzes soil reports and subterranean data to optimize foundation design and safety factors.</p>
+                </div>
+
+                <!-- Artemis -->
+                <div class="agent-card">
+                    <div class="status-badge status-dev">ROADMAP Q3 2026</div>
+                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=800&auto=format&fit=crop" alt="Artemis Agent">
+                    <div class="team-name">Artemis</div>
+                    <div class="team-role">Environmental Engineering Agent</div>
+                    <p class="text-gray text-xs mt-3">Calculates embodied carbon (LCA), thermal efficiency, and environmental impact assessments.</p>
+                </div>
+
+                <!-- Icaris -->
+                <div class="agent-card">
+                    <div class="status-badge status-dev">ROADMAP Q4 2026</div>
+                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" alt="Icaris Agent">
+                    <div class="team-name">Icaris</div>
+                    <div class="team-role">Spatial Planning Agent</div>
+                    <p class="text-gray text-xs mt-3">Optimizes urban layouts and site logistics for maximum efficiency and flow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: OPERATIONS AGENTS -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title-bar">
+                <h3>Operations Division (The Interface)</h3>
+                <span class="text-gray text-sm">Communication & Logistics</span>
+            </div>
+
+            <div class="team-grid">
+                
+                <!-- Sebastian (CLICKABLE -> CHAT WIDGET) -->
+                <div class="agent-card" onclick="document.getElementById('bc-chat-launcher').click();">
+                    <span class="click-hint">💬 START CHAT</span>
+                    <div class="status-badge status-active">v2.1 // ONLINE</div>
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Sebastian Interface">
+                    <div class="team-name">Sebastian</div>
+                    <div class="team-role">Customer Relations Agent</div>
+                    <p class="text-gray text-xs mt-3">Handles initial client intake, pilot onboarding, and provides technical support via the Uplink Interface.</p>
+                </div>
+
+                <!-- Deby -->
+                <div class="agent-card">
+                    <div class="status-badge status-active">v1.5 // ONLINE</div>
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Deby Agent">
+                    <div class="team-name">Deby</div>
+                    <div class="team-role">HR & Talent Agent</div>
+                    <p class="text-gray text-xs mt-3">Screens technical candidates, manages the engineering gauntlet, and identifies polymath talent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer section-padding text-center">
+        <div class="container">
+            <div class="copyright text-gray text-xs">© 2026 Bloomcore Labs.</div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget Injection -->
+    <script src="env.js"></script>
+    <script src="chat-widget.js"></script>
+</body>
+</html>

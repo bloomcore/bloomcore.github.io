@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology | Bloomcore Labs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Specific Styles for Tech Specs */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .spec-card {
+            background: #111;
+            border: 1px solid #333;
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .spec-card:hover {
+            border-color: var(--brand-yellow);
+            transform: translateY(-5px);
+        }
+
+        .spec-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .spec-icon {
+            color: var(--brand-green);
+            font-size: 1.5rem;
+        }
+
+        .spec-title {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+            border: 1px solid #222;
+            transition: filter 0.3s;
+        }
+
+        .spec-card:hover .spec-img {
+            filter: grayscale(0%);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="index.html">BLOOMCORE <span class="text-white">LABS</span></a></div>
+        <div class="nav-links">
+            <a href="manifesto.html">Manifesto</a>
+            <a href="technology.html" style="color:var(--brand-yellow)">Technology</a>
+            <a href="about.html">About</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html" class="btn-nav">Contact</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Polaris-1 Architecture</h1>
+        <p class="subtitle">The world's first autonomous structural engineering engine.</p>
+    </div>
+
+    <!-- INTRO SECTION -->
+    <section class="section-padding">
+        <div class="container grid-2">
+            <div class="text-content">
+                <h3>Beyond "Copilots"</h3>
+                <p class="mt-4 text-gray">Most AI tools in construction act as chatbots or simple assistants. Polaris-1 is different. It is a <strong>functional agent</strong> built on top of a physics engine.</p>
+                <p class="mt-4 text-gray">It doesn't just predict text; it calculates forces, generates valid IFC geometry, and simulates structural integrity using Finite Element Analysis (FEA). It operates as a virtual engineer, handling the full design loop from concept to fabrication files.</p>
+            </div>
+            <div class="tech-image">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop" alt="Digital Twin Core" style="width:100%; border-radius:12px; border:1px solid #333;">
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE CAPABILITIES GRID -->
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <h2 class="text-center">Core Capabilities</h2>
+            <p class="subtitle text-center">Seven layers of engineering automation.</p>
+
+            <div class="spec-grid">
+                
+                <!-- 1. Automated 3D Geometries -->
+                <div class="spec-card">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Generative Geometry">
+                    <div class="spec-header">
+                        <div class="spec-icon">⬡</div>
+                        <div class="spec-title">Automated 3D Geometry</div>
+                    </div>
+                    <p class="text-gray text-sm">Polaris generates LOD 300 structural models instantly from architectural inputs. It creates valid IFC files compatible with Revit, Tekla, and BlenderBIM, ensuring true interoperability.</p>
+                </div>
+
+                <!-- 2. Load Analysis -->
+                <div class="spec-card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Load Map">
+                    <div class="spec-header">
+                        <div class="spec-icon">↓</div>
+                        <div class="spec-title">Environmental Load Analysis</div>
+                    </div>
+                    <p class="text-gray text-sm">Automatic calculation of gravity, wind, snow, and seismic loads based on project geolocation. It references local annexes (e.g., Finnish Snow Loads) to apply safety factors correctly.</p>
+                </div>
+
+                <!-- 3. FEA -->
+                <div class="spec-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="FEA Heatmap">
+                    <div class="spec-header">
+                        <div class="spec-icon">≋</div>
+                        <div class="spec-title">Finite Element Analysis (FEA)</div>
+                    </div>
+                    <p class="text-gray text-sm">Integrated with OpenSees. Polaris meshes the geometry and runs solver iterations to visualize stress, strain, and displacement heatmaps, identifying failure points before they exist.</p>
+                </div>
+
+                <!-- 4. Compliance Checks -->
+                <div class="spec-card">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Code Check">
+                    <div class="spec-header">
+                        <div class="spec-icon">✓</div>
+                        <div class="spec-title">Real-Time Compliance</div>
+                    </div>
+                    <p class="text-gray text-sm">Every beam and column is cross-referenced against Eurocode 3 (Steel) and Eurocode 2 (Concrete). The agent flags non-compliant elements instantly and suggests viable cross-sections.</p>
+                </div>
+
+                <!-- 5. Optimization (UPDATED IMAGE LINK) -->
+                <div class="spec-card">
+                    <!-- High-tech abstract lattice structure -->
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Topology Optimization">
+                    <div class="spec-header">
+                        <div class="spec-icon">∞</div>
+                        <div class="spec-title">Topology Optimization</div>
+                    </div>
+                    <p class="text-gray text-sm">Multi-objective evolutionary algorithms optimize for weight reduction and Embodied Carbon (kgCO2e) while maintaining structural safety factors, often reducing material usage by 20%.</p>
+                </div>
+
+                <!-- 6. Drafting & Detailing -->
+                <div class="spec-card">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Blueprints">
+                    <div class="spec-header">
+                        <div class="spec-icon">✎</div>
+                        <div class="spec-title">Drafting & Detailing</div>
+                    </div>
+                    <p class="text-gray text-sm">Automated generation of 2D engineering drawings, connection details, and fabrication lists from the 3D model, drastically reducing the manual drafting workload.</p>
+                </div>
+
+                <!-- 7. Report Generation -->
+                <div class="spec-card">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Reports">
+                    <div class="spec-header">
+                        <div class="spec-icon">📄</div>
+                        <div class="spec-title">Calculation Reports</div>
+                    </div>
+                    <p class="text-gray text-sm">Polaris compiles a comprehensive PDF calculation report, detailing load cases, utilization ratios, and code references, ready for submission to regulatory authorities.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="section-padding text-center">
+        <div class="container">
+            <h2>See the engine in action</h2>
+            <p class="subtitle mt-4">Experience a scaled-down version of Polaris-1 in our public sandbox.</p>
+            <br>
+            <a href="https://app.bloomcorelabs.com" target="_blank" class="btn-white">Launch Sandbox App</a>
+        </div>
+    </section>
+
+    <footer class="footer section-padding text-center">
+        <div class="container">
+            <div class="copyright text-gray text-xs">© 2026 Bloomcore Labs.</div>
+        </div>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script src="env.js"></script>
+    <script src="chat-widget.js"></script>
+</body>
+</html>
