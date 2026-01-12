@@ -74,23 +74,23 @@
             <a href="manifesto.html">Manifesto</a>
             <a href="technology.html" style="color:var(--brand-yellow)">Technology</a>
             <a href="about.html">About</a>
-            <a href="careers.html">Careers</a>
-            <a href="contact.html" class="btn-nav">Contact</a>
+	    <!--<a href="careers.html">Careers</a> -->
+	    <!--<a href="contact.html" class="btn-nav">Contact</a>-->
         </div>
     </nav>
 
-    <div class="page-header">
+    <!--<div class="page-header">
         <h1>Polaris-1 Architecture</h1>
         <p class="subtitle">The world's first autonomous structural engineering engine.</p>
-    </div>
+    </div> -->
 
     <!-- INTRO SECTION -->
     <section class="section-padding">
         <div class="container grid-2">
             <div class="text-content">
                 <h3>Beyond "Copilots"</h3>
-                <p class="mt-4 text-gray">Most AI tools in construction act as chatbots or simple assistants. Polaris-1 is different. It is a <strong>functional agent</strong> built on top of a physics engine.</p>
-                <p class="mt-4 text-gray">It doesn't just predict text; it calculates forces, generates valid IFC geometry, and simulates structural integrity using Finite Element Analysis (FEA). It operates as a virtual engineer, handling the full design loop from concept to fabrication files.</p>
+                <p class="mt-4 text-gray">Most AI tools in construction act as chatbots or simple assistants. Polaris is different. It is a <strong>functional agent</strong> built on top of a physics engine.</p>
+                <p class="mt-4 text-gray">It doesn't just predict text; it calculates forces, generates valid IFC geometry, and simulates structural integrity using Finite Element Analysis (FEA). It operates as a virtual engineer, handling the full design loop from concept to full design.</p>
             </div>
             <div class="tech-image">
                 <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop" alt="Digital Twin Core" style="width:100%; border-radius:12px; border:1px solid #333;">
@@ -108,17 +108,17 @@
                 
                 <!-- 1. Automated 3D Geometries -->
                 <div class="spec-card">
-                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Generative Geometry">
+                    <img src="geometry.png" class="spec-img" alt="Generative Geometry">
                     <div class="spec-header">
                         <div class="spec-icon">⬡</div>
                         <div class="spec-title">Automated 3D Geometry</div>
                     </div>
-                    <p class="text-gray text-sm">Polaris generates LOD 300 structural models instantly from architectural inputs. It creates valid IFC files compatible with Revit, Tekla, and BlenderBIM, ensuring true interoperability.</p>
+                    <p class="text-gray text-sm">Polaris generates 3D structural models instantly from text and architectural inputs. It creates valid IFC files compatible with Revit, Tekla, and BlenderBIM, ensuring true interoperability.</p>
                 </div>
 
                 <!-- 2. Load Analysis -->
                 <div class="spec-card">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Load Map">
+                    <img src="load.png" class="spec-img" alt="Load Map">
                     <div class="spec-header">
                         <div class="spec-icon">↓</div>
                         <div class="spec-title">Load Analysis</div>
@@ -128,17 +128,17 @@
 
                 <!-- 3. FEA -->
                 <div class="spec-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="FEA Heatmap">
+                    <img src="fea.png" class="spec-img" alt="FEA Heatmap">
                     <div class="spec-header">
                         <div class="spec-icon">≋</div>
                         <div class="spec-title">Finite Element Analysis (FEA)</div>
                     </div>
-                    <p class="text-gray text-sm">Integrated with OpenSees. Polaris meshes the geometry and runs solver iterations to visualize stress, strain, and displacement heatmaps, identifying failure points before they exist.</p>
+                    <p class="text-gray text-sm">Integrated with Calculix. Polaris meshes the geometry and runs solver iterations to visualize stress and displacement fields, identifying failure points in the building.</p>
                 </div>
 
                 <!-- 4. Compliance Checks -->
                 <div class="spec-card">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Code Check">
+                    <img src="compliance.png" class="spec-img" alt="Code Check">
                     <div class="spec-header">
                         <div class="spec-icon">✓</div>
                         <div class="spec-title">Real-Time Compliance</div>
@@ -149,7 +149,7 @@
                 <!-- 5. Optimization (UPDATED IMAGE LINK) -->
                 <div class="spec-card">
                     <!-- High-tech abstract lattice structure -->
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Topology Optimization">
+                    <img src="optimization.png" class="spec-img" alt="Topology Optimization">
                     <div class="spec-header">
                         <div class="spec-icon">∞</div>
                         <div class="spec-title">Design Optimization</div>
@@ -159,7 +159,7 @@
 
                 <!-- 6. Drafting & Detailing -->
                 <div class="spec-card">
-                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=800&auto=format&fit=crop" class="spec-img" alt="Blueprints">
+                    <img src="drafting.png" class="spec-img" alt="Blueprints">
                     <div class="spec-header">
                         <div class="spec-icon">✎</div>
                         <div class="spec-title">Drafting & Detailing</div>
@@ -185,9 +185,9 @@
     <section class="section-padding text-center">
         <div class="container">
             <h2>See the engine in action</h2>
-            <p class="subtitle mt-4">Experience a scaled-down version of Polaris-1 in our public sandbox.</p>
+            <p class="subtitle mt-4">Experience a scaled-down version of Polaris here.</p>
             <br>
-            <a href="https://app.bloomcorelabs.com" target="_blank" class="btn-white">Launch Sandbox App</a>
+            <a href="https://app.bloomcorelabs.com" target="_blank" class="btn-white">Try Polaris</a>
         </div>
     </section>
 
