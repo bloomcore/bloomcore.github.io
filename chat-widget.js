@@ -151,7 +151,7 @@
         headerTitle.innerHTML = GEMINI_API_KEY ? 
             '<span class="bc-status-dot" style="background-color:#00E676; box-shadow:0 0 5px #00E676;"></span>SEBASTIAN // ONLINE' : 
             '<span class="bc-status-dot" style="background-color:#FF3333; box-shadow:0 0 5px #FF3333;"></span>SEBASTIAN // OFFLINE';
-    }, 4500);
+    }, 9000);
 
     renderHistory();
 
