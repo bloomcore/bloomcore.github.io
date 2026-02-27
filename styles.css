@@ -204,9 +204,10 @@ h1 { font-size: 3.5rem; line-height: 1.1; }
 @media (max-width: 768px) {
     .grid-2, .grid-3, .comparison-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 1.8rem; }
-    .hero, .vision { height: auto; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero, .vision { height: auto; min-height: 60vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: visible; }
     .hero-bg, .hero-overlay { position: absolute; top: 0; left: 0; }
     .hero-content { position: relative; bottom: auto; left: auto; max-width: 90%; padding: 20px; }
+    .hero-content p { font-size: 1rem; }
     .navbar { padding: 15px 20px; flex-wrap: wrap; }
     .menu-toggle { display: block; }
     .nav-links { display: none; width: 100%; flex-direction: column; gap: 0; padding: 10px 0; }
