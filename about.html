@@ -7,82 +7,17 @@
     <link rel="icon" type="image/png" href="https://bloomcore-static-assets.s3.eu-north-1.amazonaws.com/logo.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* GRID LAYOUT UPDATE: Max 3 items per row */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Forces 3 columns */
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
             margin-top: 40px;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 900px) {
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
-            }
+            max-width: 700px;
         }
         @media (max-width: 600px) {
-            .team-grid {
-                grid-template-columns: 1fr; /* 1 column on mobile */
-            }
-        }
-
-        /* Agent Card Styles */
-        .agent-card {
-            border: 1px solid #333;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0,0,0,0) 100%);
-            padding: 20px;
-            border-radius: 8px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            display: block; 
-            text-decoration: none; 
-            color: inherit;
-        }
-
-        .agent-card:hover {
-            border-color: var(--brand-green);
-            transform: translateY(-5px);
-            cursor: pointer;
-        }
-
-        .agent-card img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 4px;
-            filter: grayscale(100%) contrast(1.2);
-            margin-bottom: 15px;
-            border: 1px solid #222;
-        }
-        
-        .agent-card:hover img {
-            filter: grayscale(0%) contrast(1);
-        }
-
-        .status-badge {
-            font-size: 0.7rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .status-active {
-            background: rgba(0, 230, 118, 0.1);
-            color: #00E676;
-            border: 1px solid #00E676;
-        }
-
-        .status-dev {
-            background: rgba(255, 215, 0, 0.1);
-            color: #FFD700;
-            border: 1px solid #FFD700;
+            .team-grid { grid-template-columns: 1fr; }
         }
 
         .section-title-bar {
@@ -94,36 +29,112 @@
             align-items: flex-end;
         }
 
-        /* Hover effect for clickable agents */
-        .click-hint {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            color: var(--brand-yellow);
-            font-weight: bold;
-            z-index: 10;
-            background: rgba(0,0,0,0.7);
-            padding: 2px 6px;
-            border-radius: 4px;
+        /* Product capability cards */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
-        .agent-card:hover .click-hint {
-            opacity: 1;
+        .capability-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 30px;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        .capability-card:hover {
+            border-color: var(--brand-green);
+        }
+        .capability-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--brand-green);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .capability-card h4 {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .capability-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Roadmap */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .roadmap-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        .roadmap-card .roadmap-quarter {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--brand-yellow);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .roadmap-card h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .roadmap-card p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* What we build block */
+        .what-we-build {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        .what-we-build h3 {
+            color: var(--brand-yellow);
+            margin-bottom: 15px;
+        }
+        .what-we-build p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            max-width: 700px;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo"><a href="index.html">BLOOMCORE <span class="text-white">LABS</span></a></div>
-
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://bloomcore-static-assets.s3.eu-north-1.amazonaws.com/logo.png"
+                     alt="Bloomcore Logo"
+                     style="height: 32px; width: auto; margin-right: 5px;">
+                <span>BLOOMCORE <span class="text-white">LABS</span></span>
+            </a>
+        </div>
         <div class="nav-links">
             <a href="manifesto.html">Manifesto</a>
             <a href="technology.html">Technology</a>
             <a href="about.html" style="color:var(--brand-yellow)">About</a>
-	    <!--<a href="careers.html">Careers</a> -->
-	    <!--<a href="contact.html" class="btn-nav">Contact</a> -->
         </div>
     </nav>
 
@@ -131,137 +142,86 @@
         <div class="hero-overlay"></div>
         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2500&auto=format&fit=crop" alt="Team working" class="hero-bg">
         <div class="hero-content">
-            <h1>The Hybrid Workforce</h1>
-            <p>We are a team of human experts and autonomous agents working in symbiosis.</p>
+            <h1>Engineering software for structural teams</h1>
+            <p>We're building Polaris — a cloud-native platform for end-to-end structural analysis and optimization.</p>
         </div>
     </div>
 
-    <!-- SECTION 1: HUMAN LEADERSHIP -->
+    <!-- LEADERSHIP -->
     <section class="section-padding">
         <div class="container">
             <div class="section-title-bar">
                 <h3>Leadership</h3>
-                <span class="text-gray text-sm">Strategy & Review</span>
             </div>
-            
+
             <div class="team-grid">
                 <!-- Kwabena -->
                 <div class="team-member">
                     <img src="kobby.png" alt="Kwabena Atobra">
                     <div class="team-name">Kwabena Atobra</div>
                     <div class="team-role">CEO & Co-Founder</div>
-                    <p class="text-gray text-xs mt-4">Engineer & FEA Specialist. MSc ETH Zurich. PhD Candidate University of Helsinki.</p>
+                    <p class="text-gray text-xs mt-4">Engineer & FEA Specialist. MSc ETH Zurich. PhD Candidate, University of Helsinki.</p>
                 </div>
                 <!-- Eugene -->
                 <div class="team-member">
                     <img src="eugene.png" alt="Eugene Zhukov">
                     <div class="team-name">Eugene Zhukov</div>
                     <div class="team-role">CTO & Co-Founder</div>
-                    <p class="text-gray text-xs mt-4">20+ years in software engineering (Airbus, Nokia, Ericsson, F-secure). MBA Henley Business School.</p>
+                    <p class="text-gray text-xs mt-4">20+ years in software engineering (Airbus, Nokia, Ericsson, F-Secure). MBA Henley Business School.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: TECHNICAL AGENTS -->
-    <section class="section-padding bg-darker">
-        <div class="container">
-            <div class="section-title-bar">
-                <h3>Technical Division</h3>
-                <span class="text-gray text-sm">Design & Calculation</span>
-            </div>
-
-            <div class="team-grid">
-                
-                <!-- Polaris (CLICKABLE -> APP) -->
-                <a href="https://app.bloomcorelabs.com" target="_blank" class="agent-card">
-                    <span class="click-hint">↗ TRY</span>
-                    <div class="status-badge status-active">v1 // ACTIVE</div>
-                    <img src="polaris.png" alt="Polaris Agent">
-                    <div class="team-name">Polaris</div>
-                    <div class="team-role">Structural Engineering Agent</div>
-                    <p class="text-gray text-xs mt-3">Specializes in generative geometry, load calculation, and Eurocode/AISC compliance verification.</p>
-                </a>
-
-                <!-- Achilles (NEW ADDITION) -->
-                <div class="agent-card">
-                    <div class="status-badge status-dev">ROADMAP Q1 2026</div>
-                    <img src="achilles.png" alt="Achilles Agent">
-                    <div class="team-name">Achilles</div>
-                    <div class="team-role">Project Management Agent</div>
-                    <p class="text-gray text-xs mt-3">Orchestrates workflows, optimizes critical paths, and predicts timeline risks using historical data analysis.</p>
-                </div>
-
-                <!-- Vulcan -->
-                <div class="agent-card">
-                    <div class="status-badge status-dev">ROADMAP Q2 2026</div>
-                    <img src="vulcan.png" alt="Vulcan Agent">
-                    <div class="team-name">Vulcan</div>
-                    <div class="team-role">Geotechnical Engineering Agent</div>
-                    <p class="text-gray text-xs mt-3">Analyzes soil reports and subterranean data to optimize foundation design and safety factors.</p>
-                </div>
-
-                <!-- Artemis -->
-                <div class="agent-card">
-                    <div class="status-badge status-dev">ROADMAP Q3 2026</div>
-                    <img src="artemis.png" alt="Artemis Agent">
-                    <div class="team-name">Artemis</div>
-                    <div class="team-role">Environmental Engineering Agent</div>
-                    <p class="text-gray text-xs mt-3">Calculates embodied carbon (LCA), thermal efficiency, and environmental impact assessments.</p>
-                </div>
-
-                <!-- Icaris -->
-                <div class="agent-card">
-                    <div class="status-badge status-dev">ROADMAP Q4 2026</div>
-                    <img src="icaris.png" alt="Icaris Agent">
-                    <div class="team-name">Icaris</div>
-                    <div class="team-role">Spatial Planning Agent</div>
-                    <p class="text-gray text-xs mt-3">Optimizes urban layouts and site logistics for maximum efficiency and flow.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: OPERATIONS AGENTS -->
+    <!-- PRODUCT ROADMAP -->
     <section class="section-padding">
         <div class="container">
             <div class="section-title-bar">
-                <h3>Operations Division</h3>
-                <span class="text-gray text-sm">Communication & Logistics</span>
+                <h3>Product Roadmap</h3>
+                <span class="text-gray text-sm">2026</span>
             </div>
 
-            <div class="team-grid">
-                
-                <!-- Sebastian (CLICKABLE -> CHAT WIDGET) -->
-                <div class="agent-card" onclick="document.getElementById('bc-chat-launcher').click();">
-                    <span class="click-hint">💬 START CHAT</span>
-                    <div class="status-badge status-active">v1 // ONLINE</div>
-                    <img src="sebastian.png" alt="Sebastian Interface">
-                    <div class="team-name">Sebastian</div>
-                    <div class="team-role">Customer Relations Agent</div>
-                    <p class="text-gray text-xs mt-3">Handles initial client intake, pilot onboarding, and provides technical support via the Uplink Interface.</p>
+            <div class="roadmap-grid">
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q1 2026</div>
+                    <h4>Building Code Compliance</h4>
+                    <p>Geographical building code compliance checks integrated into the analysis pipeline.</p>
                 </div>
-
-                <!-- Deby -->
-                <div class="agent-card">
-                    <div class="status-badge status-active">v1 // ONLINE</div>
-                    <img src="derby.png" alt="Deby Agent">
-                    <div class="team-name">Derby</div>
-                    <div class="team-role">HR & Talent Agent</div>
-                    <p class="text-gray text-xs mt-3">Screens technical candidates, manages the engineering gauntlet, and identifies polymath talent.</p>
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q2 2026</div>
+                    <h4>Drafting & Detailing</h4>
+                    <p>Construction-ready blueprints and documentation generated from the structural model.</p>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q2 2026</div>
+                    <h4>Beta Testing</h4>
+                    <p>Pilot with design partners to validate accuracy and refine the optimization engine.</p>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q3 2026</div>
+                    <h4>General Availability</h4>
+                    <p>Core platform ready for production use.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-darker text-center">
+        <div class="container">
+            <h2>See Polaris in action</h2>
+            <p class="subtitle mt-4">Book a 20-minute demo or try it directly.</p>
+            <br>
+            <a href="contact.html" class="btn-white" style="margin-right: 15px;">Book a Demo</a>
+            <a href="https://polaris.bloomcorelabs.com" target="_blank" class="btn-black">Try Polaris</a>
         </div>
     </section>
 
     <footer class="footer section-padding text-center">
         <div class="container">
-            <div class="copyright text-gray text-xs">© 2026 Bloomcore Labs.</div>
+            <div class="copyright text-gray text-xs">&copy; 2026 Bloomcore Labs. Helsinki, Finland.</div>
         </div>
     </footer>
 
-    <!-- Chat Widget Injection -->
-    <script src="env.js"></script>
-    <script src="chat-widget.js"></script>
 </body>
 </html>

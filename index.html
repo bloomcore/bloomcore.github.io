@@ -3,14 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloomcore Labs | AI Civil Infrastructure</title>
-    
+    <title>Bloomcore Labs | Structural Analysis & Optimization in Minutes</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://bloomcore-static-assets.s3.eu-north-1.amazonaws.com/logo.png">
-    
+
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Workflow pipeline */
+        .workflow-pipeline {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin-top: 50px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .workflow-step {
+            flex: 1;
+            min-width: 160px;
+            padding: 25px 20px;
+            background: #111;
+            border: 1px solid #222;
+            position: relative;
+            text-align: center;
+        }
+        .workflow-step:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+        .workflow-step:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+        .workflow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 12px solid #333;
+            z-index: 2;
+        }
+        .workflow-step .step-number {
+            font-size: 0.7rem;
+            color: var(--brand-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .workflow-step h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .workflow-step p {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        .workflow-loop {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+            color: var(--brand-yellow);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 12px 20px;
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        /* Use-case cards */
+        .usecase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .usecase-grid { grid-template-columns: 1fr; }
+            .workflow-pipeline { flex-direction: column; }
+            .workflow-step { border-radius: 8px !important; }
+            .workflow-step:not(:last-child)::after { display: none; }
+        }
+        .usecase-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 35px;
+            transition: border-color 0.3s;
+        }
+        .usecase-card:hover {
+            border-color: var(--brand-yellow);
+        }
+        .usecase-card .usecase-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--brand-green);
+            margin-bottom: 12px;
+        }
+        .usecase-card h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .usecase-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .usecase-card ul li {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            padding-left: 20px;
+            position: relative;
+        }
+        .usecase-card ul li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--brand-yellow);
+            font-weight: 700;
+        }
+
+        /* Value props - replacing old comparison */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .value-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .value-card:hover { border-color: var(--brand-green); }
+        .value-card .value-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .value-card h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .value-card p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Traction section */
+        .traction-metrics {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .traction-metric {
+            text-align: center;
+        }
+        .traction-metric .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--brand-green);
+        }
+        .traction-metric .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,11 +194,9 @@
     <nav class="navbar">
         <div class="logo">
             <a href="index.html">
-                <!-- UPDATED LOGO IMAGE -->
-                <img src="https://bloomcore-static-assets.s3.eu-north-1.amazonaws.com/logo.png" 
-                     alt="Bloomcore Logo" 
+                <img src="https://bloomcore-static-assets.s3.eu-north-1.amazonaws.com/logo.png"
+                     alt="Bloomcore Logo"
                      style="height: 32px; width: auto; margin-right: 5px;">
-                
                 <span>BLOOMCORE <span class="text-white">LABS</span></span>
             </a>
         </div>
@@ -30,8 +204,6 @@
             <a href="manifesto.html">Manifesto</a>
             <a href="technology.html">Technology</a>
             <a href="about.html">About</a>
-	    <!--<a href="careers.html">Careers</a> -->
-	    <!--<a href="contact.html" class="btn-nav">Contact</a>-->
         </div>
     </nav>
 
@@ -40,21 +212,22 @@
         <div class="hero-image-container">
             <div class="hero-overlay"></div>
             <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2600&auto=format&fit=crop" alt="Civil Infrastructure" class="hero-bg">
-            
+
             <div class="hero-content">
-                <h1>Designing civil infrastructure at scale with AI agents.</h1>
-                <p>A full-stack AI civil engineering firm. We replace fragmented tools with autonomous agents to build faster, safer, and cheaper.</p>
-                <a href="contact.html" class="btn-white">Talk to us</a>
+                <h1>End-to-end structural analysis & optimization in minutes.</h1>
+                <p>Polaris orchestrates the workflows your team already runs. Faster iterations, clearer decisions, Eurocode compliance built in.</p>
+                <a href="contact.html" class="btn-white" style="margin-right: 15px;">Book a Demo</a>
+                <a href="https://polaris.bloomcorelabs.com" target="_blank" class="btn-black">Try Polaris</a>
             </div>
         </div>
     </header>
 
-    <!-- 2X Speed Demo Section -->
+    <!-- Polaris Demo Section -->
     <section class="section-padding bg-darker" style="padding-bottom: 0;">
         <div class="container text-center">
-            <h2>Agent in Action</h2>
-            <p class="subtitle">From text prompt to simulation in seconds.</p>
-            
+            <h2>Polaris in Action</h2>
+            <p class="subtitle">Full structural analysis pipeline — from prompt or IFC import to optimized design.</p>
+
             <div class="demo-wrapper">
                 <div class="demo-header">
                     <div class="demo-dots">
@@ -62,12 +235,12 @@
                         <div class="demo-dot" style="background:#FFBD2E"></div>
                         <div class="demo-dot" style="background:#27C93F"></div>
                     </div>
-                    <div>Structural engineering agent</div>
+                    <div>Polaris — Structural Optimization</div>
                     <div>REC ●</div>
                 </div>
 
                 <div class="video-container">
-                    <div class="speed-badge">⚡ Polaris-1</div>
+                    <div class="speed-badge">Polaris</div>
                     <video id="feature-video" class="demo-video" autoplay muted loop playsinline>
                         <source src="demo_video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -78,198 +251,151 @@
         </div>
     </section>
 
-    <!-- Mission / Problem Section (Text Only) -->
-    <section class="mission section-padding">
+    <!-- The Polaris Workflow -->
+    <section class="section-padding">
         <div class="container">
-            <div class="grid-2">
-                
-                <!-- Problem Block -->
-                <div class="card" style="border-top: 3px solid #FF5F56; height: 100%;">
-                    <div class="icon" style="color: #FF5F56; font-size: 1.5rem; margin-bottom: 15px;">⚠</div>
-                    <h3 style="color: #FF5F56; font-size: 1.8rem;">The Problem</h3>
-                    <h4 style="color: white; margin-top: 10px; font-size: 1.1rem;">A Broken System</h4>
-                    <p class="mt-4 text-gray" style="line-height: 1.7;">
-                        We believe the way we build infrastructure globally is fundamentally broken. Engineers are bogged down in manual, repetitive processes—from design to material sourcing—leaving them no time for creative work. This fragmentation leads to projects that are complicated, costly, and perpetually delayed.
-                    </p>
-                </div>
+            <h2 class="text-center">How Polaris Works</h2>
+            <p class="subtitle text-center">The full structural design pipeline, orchestrated end-to-end.</p>
 
-                <!-- Solution Block -->
-                <div class="card" style="border-top: 3px solid #00E676; height: 100%;">
-                    <div class="icon" style="color: #00E676; font-size: 1.5rem; margin-bottom: 15px;">◈</div>
-                    <h3 style="color: #00E676; font-size: 1.8rem;">The Solution</h3>
-                    <h4 style="color: white; margin-top: 10px; font-size: 1.1rem;">Human-Agent Collaboration</h4>
-                    <p class="mt-4 text-gray" style="line-height: 1.7;">
-                        We propose a new paradigm. Our AI agents handle the manual and time-consuming tasks end-to-end across the entire design and construction stack. This liberates the human expert to provide creative oversight, resulting in a perfect symbiosis that builds the world faster and better.
-                    </p>
+            <div class="workflow-pipeline">
+                <div class="workflow-step">
+                    <div class="step-number">Step 1</div>
+                    <h4>Structural Geometry</h4>
+                    <p>Import IFC models or generate structures from prompt (with RAG)</p>
                 </div>
-
+                <div class="workflow-step">
+                    <div class="step-number">Step 2</div>
+                    <h4>Load Analysis</h4>
+                    <p>Automatic load calculation per Eurocode with geolocation-based parameters.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">Step 3</div>
+                    <h4>FEA Simulation</h4>
+                    <p>Cloud-based finite element analysis on all structural elements in minutes.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">Step 4</div>
+                    <h4>Compliance Check</h4>
+                    <p>Automated Eurocode verification with element-level pass/fail reporting.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">Step 5</div>
+                    <h4>Optimization</h4>
+                    <p>Iterative design improvements targeting safety, material, and cost.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">Step 6</div>
+                    <h4>Reports & Drafting</h4>
+                    <p>Calculation reports and construction-ready documentation.</p>
+                </div>
+            </div>
+            <div class="workflow-loop">
+                Steps 3–5 run in an iterative optimization loop until targets are met
             </div>
         </div>
-    </section> 
+    </section>
 
-    <!-- Comparison Section -->
-    <section class="comparison section-padding">
+    <!-- Who It's For -->
+    <section class="section-padding bg-darker">
         <div class="container">
-            <h2>The Paradigm Shift</h2>
-            
-            <div class="comparison-grid mt-5">
-                <!-- Column 1 -->
-                <div class="col-vetnor">
-                    <h4 class="col-header">BLOOMCORE LABS</h4>
-                    <ul class="check-list">
-                        <li><span class="check">✓</span> AI Agents generate infrastructure designs</li>
-                        <li><span class="check">✓</span> Real-time error & compliance detection</li>
-                        <li><span class="check">✓</span> End-to-end vertical integration</li>
-                        <li><span class="check">✓</span> Human Creative Oversight</li>
+            <h2 class="text-center">Who It's For</h2>
+            <p class="subtitle text-center">From small firms to enterprise engineering teams.</p>
+
+            <div class="usecase-grid">
+                <div class="usecase-card">
+                    <div class="usecase-label">Structural Engineering Teams</div>
+                    <h4>Shorten iteration cycles from hours to minutes</h4>
+                    <ul>
+                        <li>Run full FEA in the cloud — no local compute bottleneck</li>
+                        <li>Iterate sections, materials, and reinforcement interactively</li>
+                        <li>Eurocode compliance checks built into every analysis run</li>
+                        <li>Calculation-ready reports for regulatory submission</li>
                     </ul>
                 </div>
-                
-                <!-- Column 2 -->
-                <div class="col-traditional">
-                    <h4 class="col-header">CLASSICAL FIRMS</h4>
-                    <ul class="minus-list">
-                        <li><span class="minus">−</span> Manual drafting & repetitive calculation</li>
-                        <li><span class="minus">−</span> Fragmented legacy software</li>
-                        <li><span class="minus">−</span> Slow feedback loops on errors</li>
-                        <li><span class="minus">−</span> Engineers acting as data routers</li>
+                <div class="usecase-card">
+                    <div class="usecase-label">Design-Build / EPC Firms</div>
+                    <h4>Optimize structural cost before you submit the bid</h4>
+                    <ul>
+                        <li>Test design alternatives quickly during the bidding phase</li>
+                        <li>Reduce steel tonnage and concrete volume with iterative optimization</li>
+                        <li>Re-run full analysis in minutes when parameters change</li>
+                        <li>Auditable calculation reports for every design decision</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- APPLICATION AREAS SCROLL -->
-    <section class="applications-section section-padding">
-        <div class="container text-center mb-5">
-            <h2>Where We Deploy</h2>
-            <p class="subtitle">End-to-end autonomous capabilities across the infrastructure lifecycle.</p>
-        </div>
+    <!-- Why Polaris (replacing the old comparison table) -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center">Why Polaris</h2>
+            <p class="subtitle text-center">What changes when structural iteration becomes real-time.</p>
 
-        <div class="marquee-container">
-            <div class="marquee-track">
-
-                <!-- SET 1 -->
-                <!-- Item 1: Digital Twins -->
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 16V8C20.9996 7.64927 20.9048 7.30532 20.7251 7.00381C20.5455 6.70231 20.2874 6.45427 19.978 6.286L12.978 2.286C12.6787 2.11479 12.3415 2.02472 11.997 2.02472C11.6525 2.02472 11.3153 2.11479 11.016 2.286L4.016 6.286C3.70518 6.45517 3.44621 6.70425 3.26629 7.00693C3.08637 7.30961 2.99187 7.65485 2.992 8.006V16.006C2.99222 16.3562 3.08726 16.7003 3.26738 17.0019C3.4475 17.3035 3.70617 17.5517 4.016 17.72L11.016 21.72C11.3157 21.8906 11.653 21.98 11.9975 21.98C12.342 21.98 12.6793 21.8906 12.979 21.72L19.979 17.72C20.2882 17.5511 20.5466 17.3026 20.7262 17.0003C20.9057 16.698 21.0001 16.3529 21 16.002V16Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M3.29004 7L12 12.06L20.71 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 22V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h4>Digital Twins</h4>
-                    <p>Live, physics-compliant digital replicas of buildings and infrastructure that update in real-time with sensor data for operational insight.</p>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#9201;</div>
+                    <h4>Minutes, Not Hours</h4>
+                    <p>Cloud-based FEA runs in minutes. No waiting on local machines.</p>
                 </div>
-
-                <!-- Item 2: Vulnerability Assessment -->
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22S20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 8V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 16H12.01" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h4>Threat & Vulnerability Assessment</h4>
-                    <p>AI-driven stress testing of critical infrastructure against physical threats, natural disasters, and structural fatigue scenarios.</p>
+                <div class="value-card">
+                    <div class="value-icon">&#9881;</div>
+                    <h4>Iterative Optimization</h4>
+                    <p>Automated design-analysis loops converge on safety and cost targets.</p>
                 </div>
-
-                <!-- Item 3: Proactive Maintenance -->
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 2V4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h4>Proactive Maintenance</h4>
-                    <p>Predictive scheduling engines that forecast component failure and optimize repair logistics before downtime occurs.</p>
+                <div class="value-card">
+                    <div class="value-icon">&#10003;</div>
+                    <h4>Eurocode Built In</h4>
+                    <p>EN 1990/1991/1992/1993 compliance checked on every run.</p>
                 </div>
-
-                <!-- Item 4: Green Field Design -->
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 22H22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 18V2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M5 18V10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M19 18V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M5 10L12 2L19 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h4>Green Field Design</h4>
-                    <p>End-to-end generative design for new construction projects, optimizing land use, cost, and sustainability from day one.</p>
+                <div class="value-card">
+                    <div class="value-icon">&#128196;</div>
+                    <h4>IFC Native</h4>
+                    <p>Works with your existing models. Import from Revit, Tekla, or BlenderBIM.</p>
                 </div>
-
-                <!-- DUPLICATE SET FOR INFINITE LOOP (Required for Marquee effect) -->
-
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8C20.9996 7.64927 20.9048 7.30532 20.7251 7.00381C20.5455 6.70231 20.2874 6.45427 19.978 6.286L12.978 2.286C12.6787 2.11479 12.3415 2.02472 11.997 2.02472C11.6525 2.02472 11.3153 2.11479 11.016 2.286L4.016 6.286C3.70518 6.45517 3.44621 6.70425 3.26629 7.00693C3.08637 7.30961 2.99187 7.65485 2.992 8.006V16.006C2.99222 16.3562 3.08726 16.7003 3.26738 17.0019C3.4475 17.3035 3.70617 17.5517 4.016 17.72L11.016 21.72C11.3157 21.8906 11.653 21.98 11.9975 21.98C12.342 21.98 12.6793 21.8906 12.979 21.72L19.979 17.72C20.2882 17.5511 20.5466 17.3026 20.7262 17.0003C20.9057 16.698 21.0001 16.3529 21 16.002V16Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.29004 7L12 12.06L20.71 7" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22V12" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <h4>Digital Twins</h4>
-                    <p>Live, physics-compliant digital replicas of buildings and infrastructure that update in real-time with sensor data for operational insight.</p>
+                <div class="value-card">
+                    <div class="value-icon">&#9729;</div>
+                    <h4>Cloud-Native</h4>
+                    <p>Scales on demand. Run from any device, no installation required.</p>
                 </div>
-
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22S20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8V12" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 16H12.01" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <h4>Threat & Vulnerability Assessment</h4>
-                    <p>AI-driven stress testing of critical infrastructure against physical threats, natural disasters, and structural fatigue scenarios.</p>
+                <div class="value-card">
+                    <div class="value-icon">&#128203;</div>
+                    <h4>Auditable Outputs</h4>
+                    <p>Full calculation reports with load cases, utilization ratios, and code references.</p>
                 </div>
-
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2V4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <h4>Proactive Maintenance</h4>
-                    <p>Predictive scheduling engines that forecast component failure and optimize repair logistics before downtime occurs.</p>
-                </div>
-
-                <div class="app-card">
-                    <div class="app-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 22H22" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18V2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 18V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 18V6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10L12 2L19 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <h4>Green Field Design</h4>
-                    <p>End-to-end generative design for new construction projects, optimizing land use, cost, and sustainability from day one.</p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- BACKED BY SECTION -->
-    <section class="backed-by section-padding text-center">
+    <!-- Traction & Trust -->
+    <section class="section-padding bg-darker text-center">
         <div class="container">
-            <h4 class="text-gray uppercase tracking-wide" style="font-size: 0.85rem; letter-spacing: 3px;">Backed by the best</h4>
-
-            <div class="logos-grid">
-
-                <!-- Antler LOGO (Text fallback styled to look like a logo, as reliable SVG is rare) -->
-                <div class="investor-logo" title="Antler">
-                    <!-- Using text that looks like a logo for Helseed -->
-                    <span style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2rem; color: white; letter-spacing: -1px;">Antler</span>
+            <div class="traction-metrics" style="justify-content: center;">
+                <div class="traction-metric">
+                    <div class="metric-number">50+</div>
+                    <div class="metric-label">Early Signups</div>
                 </div>
-
+                <div class="traction-metric">
+                    <div class="metric-number">1</div>
+                    <div class="metric-label">Active Design Partner</div>
+                </div>
             </div>
+            <p class="text-gray" style="margin-top: 30px; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;">Backed by <a href="https://www.antler.co" target="_blank" style="font-weight: 700; color: white; text-decoration: none;">Antler</a></p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer section-padding text-center">
         <div class="container">
-            <h2>Get in touch</h2>
-            <p class="text-gray mb-5">Ready to modernize your infrastructure design process?</p>
-            <a href="contact.html" class="btn-white">Contact Us</a>
-            
+            <h2>Ready to see it work?</h2>
+            <p class="text-gray mb-5">Book a 20-minute demo or try Polaris directly.</p>
+            <a href="contact.html" class="btn-white" style="margin-right: 15px;">Book a Demo</a>
+            <a href="https://polaris.bloomcorelabs.com" target="_blank" class="btn-black">Try Polaris</a>
+
             <div class="footer-bottom mt-5">
-                <div class="copyright text-gray text-xs">© 2026 Bloomcore Labs. Helsinki, Finland.</div>
+                <div class="copyright text-gray text-xs">&copy; 2026 Bloomcore Labs. Helsinki, Finland.</div>
                 <div class="socials text-gray">
-                    <span>LinkedIn</span>
-                    <span>X</span>
+                    <a href="https://www.linkedin.com/company/bloomcore-labs" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -281,13 +407,12 @@
             const video = document.getElementById('feature-video');
             if(video) {
                 video.playbackRate = 1.5;
-                video.addEventListener('play', function() { 
-                    this.playbackRate = 1.5; 
+                video.addEventListener('play', function() {
+                    this.playbackRate = 1.5;
                 });
             }
         });
     </script>
-    <script src="env.js"></script>
-    <script src="chat-widget.js"></script> 
+
 </body>
 </html>

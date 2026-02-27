@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology | Bloomcore Labs</title>
+    <title>Polaris — Structural Analysis & Optimization Platform | Bloomcore Labs</title>
     <link rel="icon" type="image/png" href="https://bloomcore-static-assets.s3.eu-north-1.amazonaws.com/logo.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -69,28 +69,28 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo"><a href="index.html">BLOOMCORE <span class="text-white">LABS</span></a></div>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://bloomcore-static-assets.s3.eu-north-1.amazonaws.com/logo.png"
+                     alt="Bloomcore Logo"
+                     style="height: 32px; width: auto; margin-right: 5px;">
+                <span>BLOOMCORE <span class="text-white">LABS</span></span>
+            </a>
+        </div>
         <div class="nav-links">
             <a href="manifesto.html">Manifesto</a>
             <a href="technology.html" style="color:var(--brand-yellow)">Technology</a>
             <a href="about.html">About</a>
-	    <!--<a href="careers.html">Careers</a> -->
-	    <!--<a href="contact.html" class="btn-nav">Contact</a>-->
         </div>
     </nav>
-
-    <!--<div class="page-header">
-        <h1>Polaris-1 Architecture</h1>
-        <p class="subtitle">The world's first autonomous structural engineering engine.</p>
-    </div> -->
 
     <!-- INTRO SECTION -->
     <section class="section-padding">
         <div class="container grid-2">
             <div class="text-content">
-                <h3>Beyond "Copilots"</h3>
-                <p class="mt-4 text-gray">Most AI tools in construction act as chatbots or simple assistants. Polaris is different. It is a <strong>functional agent</strong> built on top of a physics engine.</p>
-                <p class="mt-4 text-gray">It doesn't just predict text; it calculates forces, generates valid IFC geometry, and simulates structural integrity using Finite Element Analysis (FEA). It operates as a virtual engineer, handling the full design loop from concept to full design.</p>
+                <h3>Beyond Copilots</h3>
+                <p class="mt-4 text-gray">Most AI tools in construction act as chatbots or simple assistants. Polaris is different. It is a <strong>structural optimization platform</strong> built on top of a physics engine.</p>
+                <p class="mt-4 text-gray">It calculates forces, generates valid IFC geometry with FreeCAD and runs finite element analysis using CalculiX — all orchestrated in the cloud. Engineers stay in control while Polaris handles the iteration-heavy work: meshing, solving, checking compliance and converging on design targets.</p>
             </div>
             <div class="tech-image">
                 <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop" alt="Digital Twin Core" style="width:100%; border-radius:12px; border:1px solid #333;">
@@ -102,7 +102,6 @@
     <section class="section-padding bg-darker">
         <div class="container">
             <h2 class="text-center">Core Capabilities</h2>
-            <p class="subtitle text-center">Seven layers of engineering automation.</p>
 
             <div class="spec-grid">
                 
@@ -113,7 +112,7 @@
                         <div class="spec-icon">⬡</div>
                         <div class="spec-title">Automated 3D Geometry</div>
                     </div>
-                    <p class="text-gray text-sm">Polaris generates 3D structural models instantly from text and architectural inputs. It creates valid IFC files compatible with Revit, Tekla, and BlenderBIM, ensuring true interoperability.</p>
+                    <p class="text-gray text-sm">Polaris can create structures from prompt (with RAG) or import IFC files. Created/updated structure is available for download as IFC.</p>
                 </div>
 
                 <!-- 2. Load Analysis -->
@@ -123,7 +122,7 @@
                         <div class="spec-icon">↓</div>
                         <div class="spec-title">Load Analysis</div>
                     </div>
-                    <p class="text-gray text-sm">Automatic calculation of gravity, wind, snow, and seismic loads based on project geolocation. It references local annexes (e.g., Finnish Snow Loads) to apply safety factors correctly.</p>
+                    <p class="text-gray text-sm">Automatic calculation of gravity, wind, snow, and seismic loads per EN 1991 based on project geolocation. References local national annexes and applies ULS/SLS combinations per EN 1990.</p>
                 </div>
 
                 <!-- 3. FEA -->
@@ -133,7 +132,7 @@
                         <div class="spec-icon">≋</div>
                         <div class="spec-title">Finite Element Analysis (FEA)</div>
                     </div>
-                    <p class="text-gray text-sm">Integrated with Calculix. Polaris meshes the geometry and runs solver iterations to visualize stress and displacement fields, identifying failure points in the building.</p>
+                    <p class="text-gray text-sm">Cloud-based FEA powered by CalculiX. Polaris meshes the geometry using Gmsh and runs solver iterations to produce stress and displacement fields, identifying critical elements in minutes.</p>
                 </div>
 
                 <!-- 4. Compliance Checks -->
@@ -143,7 +142,7 @@
                         <div class="spec-icon">✓</div>
                         <div class="spec-title">Real-Time Compliance</div>
                     </div>
-                    <p class="text-gray text-sm">Every beam and column is cross-referenced against Eurocode 3 (Steel) and Eurocode 2 (Concrete). The agent flags non-compliant elements instantly and suggests viable cross-sections.</p>
+                    <p class="text-gray text-sm">Every beam and column is cross-referenced against Eurocode 3 (Steel) and Eurocode 2 (Concrete). Non-compliant elements are flagged with factor-of-safety reporting and viable cross-section suggestions.</p>
                 </div>
 
                 <!-- 5. Optimization (UPDATED IMAGE LINK) -->
@@ -154,7 +153,7 @@
                         <div class="spec-icon">∞</div>
                         <div class="spec-title">Design Optimization</div>
                     </div>
-                    <p class="text-gray text-sm">Multi-objective evolutionary algorithms optimize for weight reduction and Embodied Carbon (kgCO2e) while maintaining structural safety factors, often reducing material usage by 20%.</p>
+                    <p class="text-gray text-sm">Iterative design-analysis loops optimize for weight reduction and cost while maintaining target safety factors. Polaris proposes and executes section and material changes automatically.</p>
                 </div>
 
                 <!-- 6. Drafting & Detailing -->
@@ -174,7 +173,7 @@
                         <div class="spec-icon">📄</div>
                         <div class="spec-title">Calculation Reports</div>
                     </div>
-                    <p class="text-gray text-sm">Polaris compiles a comprehensive PDF calculation report, detailing load cases, utilization ratios, and code references, ready for submission to regulatory authorities.</p>
+                    <p class="text-gray text-sm">Polaris compiles a comprehensive PDF calculation report, detailing load cases, utilization ratios and code references, ready for submission to regulatory authorities.</p>
                 </div>
 
             </div>
@@ -184,10 +183,11 @@
     <!-- CALL TO ACTION -->
     <section class="section-padding text-center">
         <div class="container">
-            <h2>See the engine in action</h2>
-            <p class="subtitle mt-4">Experience a scaled-down version of Polaris here.</p>
+            <h2>See Polaris in action</h2>
+            <p class="subtitle mt-4">Book a 20-minute demo or try it directly.</p>
             <br>
-            <a href="https://app.bloomcorelabs.com" target="_blank" class="btn-white">Try Polaris</a>
+            <a href="contact.html" class="btn-white" style="margin-right: 15px;">Book a Demo</a>
+            <a href="https://polaris.bloomcorelabs.com" target="_blank" class="btn-black">Try Polaris</a>
         </div>
     </section>
 
@@ -197,8 +197,5 @@
         </div>
     </footer>
 
-    <!-- Global Scripts -->
-    <script src="env.js"></script>
-    <script src="chat-widget.js"></script>
 </body>
 </html>
