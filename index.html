@@ -200,6 +200,7 @@
                 <span>BLOOMCORE <span class="text-white">LABS</span></span>
             </a>
         </div>
+        <button class="menu-toggle" aria-label="Menu">&#9776;</button>
         <div class="nav-links">
             <a href="manifesto.html">Manifesto</a>
             <a href="technology.html">Technology</a>
@@ -411,6 +412,12 @@
                     this.playbackRate = 1.5;
                 });
             }
+        });
+    </script>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('open');
         });
     </script>
 
