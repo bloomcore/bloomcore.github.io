@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bloomcore · Hero Text Animation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Transparent body is REQUIRED for HF to render WebM with alpha.
+           If body has an opaque bg (even #000), captured frames come out
+           yuv420p instead of yuva420p and the overlay will hide the hero. */
+        html, body { margin: 0; padding: 0; background: transparent; overflow: hidden; }
+    </style>
+</head>
+<body>
+
+<div data-composition-id="hero-text"
+     data-width="1920"
+     data-height="1080"
+     data-start="0"
+     data-duration="5">
+
+    <div id="content"
+         class="clip"
+         data-start="0"
+         data-duration="5"
+         data-track-index="0">
+
+        <div class="scene-content">
+            <h1 class="headline">
+                <span class="w">Stop</span>
+                <span class="w mh-scribble-wrap">
+                    rebuilding<svg class="mh-scribble-svg" viewBox="0 0 500 28" preserveAspectRatio="none"><path id="scribble-1" d="M0,14 Q31,2 62,14 Q93,26 125,14 Q156,2 187,14 Q218,26 250,14 Q281,2 312,14 Q343,26 375,14 Q406,2 437,14 Q468,26 500,14" fill="none" stroke="#00E676" stroke-width="5" stroke-linecap="round"/></svg>
+                </span>
+                <span class="w">structural</span>
+                <span class="w">models</span>
+                <span class="w">from</span>
+                <span class="w">scratch</span>
+            </h1>
+            <p class="subhead">
+                <span class="w">Turn</span>
+                <span class="w">architect</span>
+                <span class="w">models</span>
+                <span class="w">into</span>
+                <span class="w">analysis-ready</span>
+                <span class="w">structures</span>
+                <span class="w">and</span>
+                <span class="w">reuse</span>
+                <span class="w">any</span>
+                <span class="w">past</span>
+                <span class="w">project</span>
+                <span class="w">instantly.</span>
+                <span class="w">Iterate,</span>
+                <span class="w">run</span>
+                <span class="w">FEA</span>
+                <span class="w">and</span>
+                <span class="w">optimize</span>
+                <span class="w">in</span>
+                <span class="w">minutes.</span>
+            </p>
+            <!-- Invisible spacer reserving the vertical real estate where the
+                 live site's two CTA buttons sit (46px button row + 20px
+                 margin-top = 66px). Makes overlay <p> bottom line up with
+                 real <p> bottom at handoff. -->
+            <div class="button-spacer" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <style>
+        [data-composition-id="hero-text"] {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: transparent;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        [data-composition-id="hero-text"] #content {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* The overlay element in index.html is positioned + sized to exactly
+           match .hero-content (bottom: 80px, left: 60px, max-width: 700px,
+           aspect-ratio 16/9). Inside that ~700×394 display box the 1920×1080
+           composition scales by ~0.365 (700/1920), so for DISPLAY sizes to
+           match real CSS:
+               headline 56px / 0.365 ≈ 153px ≈ 8vw
+               subhead  22px / 0.365 ≈  60px ≈ 3.1vw
+           A button-spacer reserves the 76px real-button footprint: button
+           row is 56px (15px padding + 25.6px line-height × 16px font + 15px
+           padding) plus 20px margin-top.
+               76px / 0.365 ≈ 208px ≈ 11vw
+           Everything flex-ends to the bottom, matching the live layout —
+           so overlay <p> bottom lands on top of real <p> bottom at handoff. */
+        [data-composition-id="hero-text"] .scene-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* letter-spacing and line-height values match styles.css exactly
+           (h1 has -0.5px absolute letter-spacing → -0.5/56 ≈ -0.0089em at
+           56px display; body's line-height 1.6 is inherited by the p). */
+        [data-composition-id="hero-text"] .headline {
+            font-size: 8vw;         /* 8 × 19.2 × (700/1920) = 56.00 px display */
+            font-weight: 700;
+            letter-spacing: -0.0089em;
+            line-height: 1.1;
+            color: #FFD700;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        [data-composition-id="hero-text"] .subhead {
+            font-size: 3.086vw;     /* 3.086 × 19.2 × (700/1920) = 21.60 px display */
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ffffff;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        [data-composition-id="hero-text"] .button-spacer {
+            width: 100%;
+            height: 11vw;
+            flex-shrink: 0;
+        }
+
+        [data-composition-id="hero-text"] .w {
+            display: inline-block;
+        }
+
+        /* Scribble underline — pattern from hyperframes skill css-patterns.md */
+        [data-composition-id="hero-text"] .mh-scribble-wrap {
+            position: relative;
+        }
+        [data-composition-id="hero-text"] .mh-scribble-svg {
+            position: absolute;
+            left: 0;
+            bottom: -1.5vw;
+            width: 100%;
+            height: 3vw;
+            overflow: visible;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+        window.__timelines = window.__timelines || {};
+
+        // Measure the scribble path so stroke-dashoffset can draw it on.
+        const path = document.querySelector('#scribble-1');
+        const pathLen = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
+
+        const tl = gsap.timeline({ paused: true });
+
+        // Headline — word stagger, power3.out for a confident reveal
+        tl.from('[data-composition-id="hero-text"] .headline .w', {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            stagger: 0.09
+        }, 0.3);
+
+        // Scribble draws on under "rebuilding" once the headline is settled
+        tl.to('#scribble-1', {
+            strokeDashoffset: 0,
+            duration: 1.0,
+            ease: 'power1.inOut'
+        }, 1.7);
+
+        // Subhead — tighter stagger, gentler ease
+        tl.from('[data-composition-id="hero-text"] .subhead .w', {
+            y: 20,
+            opacity: 0,
+            duration: 0.55,
+            ease: 'power2.out',
+            stagger: 0.035
+        }, 2.8);
+
+        // Final fade-out — final-scene rule; overlay handoff to real DOM text.
+        tl.to('[data-composition-id="hero-text"] #content', {
+            opacity: 0,
+            duration: 0.6,
+            ease: 'power2.in'
+        }, 4.3);
+
+        window.__timelines['hero-text'] = tl;
+
+        // Standalone browser preview (iframe embed / direct open): play on load
+        if (typeof window.__hyperframes === 'undefined') {
+            window.addEventListener('load', () => tl.play(0));
+        }
+    </script>
+</div>
+
+</body>
+</html>

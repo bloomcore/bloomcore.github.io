@@ -25,6 +25,36 @@
             pointer-events: none;
         }
 
+        /* Hero text intro — transparent WebM overlay positioned + sized to
+           exactly match .hero-content (same bottom/left/max-width custom
+           properties). This makes the overlay's display scale deterministic
+           regardless of viewport: text inside the composition always renders
+           at the real CSS sizes at handoff. */
+        .hero-text-overlay {
+            position: absolute;
+            bottom: var(--hero-content-bottom);
+            left: var(--hero-content-left);
+            width: min(var(--hero-content-max-width), calc(100% - 2 * var(--hero-content-left)));
+            aspect-ratio: 16 / 9;
+            z-index: 2;
+            pointer-events: none;
+            border: 0;
+        }
+        .hero-content {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        .hero-content.revealed {
+            opacity: 1;
+        }
+        /* Compact layout (matches the max-width / max-height breakpoints in
+           styles.css): overlay's fixed-position layout doesn't apply; skip
+           it and show the real text immediately. */
+        @media (max-width: 768px), (max-height: 500px) {
+            .hero-text-overlay { display: none; }
+            .hero-content { opacity: 1; }
+        }
+
         /* Workflow pipeline */
         .workflow-pipeline {
             display: flex;
@@ -227,6 +257,11 @@
                autoplay muted loop playsinline
                aria-hidden="true"></video>
         <div class="hero-overlay"></div>
+        <video class="hero-text-overlay"
+               id="hero-text-overlay"
+               src="hf-hero-text/intro.webm"
+               autoplay muted playsinline
+               aria-hidden="true"></video>
         <div class="hero-content">
             <h1>Stop rebuilding structural models from scratch</h1>
             <p>Turn architect models into analysis-ready structures and reuse any past project instantly. Iterate, run FEA and optimize in minutes.</p>
@@ -431,6 +466,33 @@
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('open');
         });
+    </script>
+
+    <script>
+        // Hero text intro handoff: start fading real text in as the overlay
+        // composition begins its internal fade-out (at t=4.3s), then drop the
+        // overlay element once it ends so it stops sitting in the DOM.
+        (function () {
+            const overlay = document.getElementById('hero-text-overlay');
+            const content = document.querySelector('.hero-content');
+            if (!content) return;
+            if (!overlay) { content.classList.add('revealed'); return; }
+
+            let revealed = false;
+            const reveal = () => {
+                if (revealed) return;
+                revealed = true;
+                content.classList.add('revealed');
+            };
+
+            // Crossfade: real text fades in while overlay is still fading out.
+            setTimeout(reveal, 4300);
+            // Failsafe: if overlay stalls or errors, still show text.
+            setTimeout(reveal, 7000);
+
+            overlay.addEventListener('ended', () => overlay.remove());
+            overlay.addEventListener('error', () => { overlay.remove(); reveal(); });
+        })();
     </script>
 
 </body>
