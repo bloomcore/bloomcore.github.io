@@ -40,3 +40,24 @@ For iteration without re-rendering: open `hf-intro/index.html` directly in a bro
 
 - Timed elements (anything with `data-start` / `data-duration`) need `class="clip"` for the runtime to control visibility.
 - The root composition div needs `data-start="0"` and `data-duration="N"` in addition to `data-width` / `data-height`.
+
+## Hero text overlay (`hf-hero-text/`)
+
+Separate composition that renders a WebM with alpha, overlaid on top of `hf-intro/intro.mp4` via the `<video class="hero-text-overlay">` element in `index.html`. The overlay animates the hero H1 + subhead, then fades to hand off to the real DOM text beneath.
+
+### Render — must pass `--format webm` for alpha
+
+```bash
+cd hf-hero-text
+npx hyperframes lint
+npx hyperframes render --format webm -o intro.webm
+```
+
+Without `--format webm`, HyperFrames renders H.264/yuv420p into the `.webm` container regardless of the `-o` extension — the file plays with an opaque background and hides the hero video beneath it. Verify alpha after render:
+
+```bash
+ffprobe -show_streams intro.webm 2>&1 | grep ALPHA_MODE
+# Expect: TAG:ALPHA_MODE=1
+```
+
+The composition's `html, body { background: transparent; }` is also required — without it, captured frames come out yuv420p even with `--format webm`.

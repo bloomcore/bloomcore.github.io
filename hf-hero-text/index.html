@@ -27,33 +27,29 @@
 
         <div class="scene-content">
             <h1 class="headline">
-                <span class="w">Stop</span>
-                <span class="w mh-scribble-wrap">
-                    rebuilding<svg class="mh-scribble-svg" viewBox="0 0 500 28" preserveAspectRatio="none"><path id="scribble-1" d="M0,14 Q31,2 62,14 Q93,26 125,14 Q156,2 187,14 Q218,26 250,14 Q281,2 312,14 Q343,26 375,14 Q406,2 437,14 Q468,26 500,14" fill="none" stroke="#00E676" stroke-width="5" stroke-linecap="round"/></svg>
-                </span>
-                <span class="w">structural</span>
-                <span class="w">models</span>
-                <span class="w">from</span>
-                <span class="w">scratch</span>
+                <span class="w">Change</span>
+                <span class="w">the</span>
+                <span class="w">model</span>
+                <span class="w">&mdash;</span>
+                <span class="w">everything</span>
+                <span class="w">downstream</span>
+                <span class="w">updates.</span>
             </h1>
             <p class="subhead">
-                <span class="w">Turn</span>
-                <span class="w">architect</span>
-                <span class="w">models</span>
-                <span class="w">into</span>
-                <span class="w">analysis-ready</span>
-                <span class="w">structures</span>
+                <span class="w">Polaris</span>
+                <span class="w">cascades</span>
+                <span class="w">a</span>
+                <span class="w">model</span>
+                <span class="w">change</span>
+                <span class="w">through</span>
+                <span class="w">FEA,</span>
+                <span class="w">Eurocode</span>
+                <span class="w">compliance</span>
                 <span class="w">and</span>
-                <span class="w">reuse</span>
-                <span class="w">any</span>
-                <span class="w">past</span>
-                <span class="w">project</span>
-                <span class="w">instantly.</span>
-                <span class="w">Iterate,</span>
-                <span class="w">run</span>
-                <span class="w">FEA</span>
-                <span class="w">and</span>
-                <span class="w">optimize</span>
+                <span class="w">auditable</span>
+                <span class="w">calculation</span>
+                <span class="w">reports</span>
+                <span class="w">&mdash;</span>
                 <span class="w">in</span>
                 <span class="w">minutes.</span>
             </p>
@@ -141,29 +137,11 @@
         [data-composition-id="hero-text"] .w {
             display: inline-block;
         }
-
-        /* Scribble underline — pattern from hyperframes skill css-patterns.md */
-        [data-composition-id="hero-text"] .mh-scribble-wrap {
-            position: relative;
-        }
-        [data-composition-id="hero-text"] .mh-scribble-svg {
-            position: absolute;
-            left: 0;
-            bottom: -1.5vw;
-            width: 100%;
-            height: 3vw;
-            overflow: visible;
-        }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <script>
         window.__timelines = window.__timelines || {};
-
-        // Measure the scribble path so stroke-dashoffset can draw it on.
-        const path = document.querySelector('#scribble-1');
-        const pathLen = path.getTotalLength();
-        gsap.set(path, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
 
         const tl = gsap.timeline({ paused: true });
 
@@ -176,21 +154,16 @@
             stagger: 0.09
         }, 0.3);
 
-        // Scribble draws on under "rebuilding" once the headline is settled
-        tl.to('#scribble-1', {
-            strokeDashoffset: 0,
-            duration: 1.0,
-            ease: 'power1.inOut'
-        }, 1.7);
-
-        // Subhead — tighter stagger, gentler ease
+        // Subhead — tighter stagger, gentler ease. Starts after the
+        // headline has settled; brought forward since there's no longer
+        // a mid-headline sketchout beat to wait through.
         tl.from('[data-composition-id="hero-text"] .subhead .w', {
             y: 20,
             opacity: 0,
             duration: 0.55,
             ease: 'power2.out',
             stagger: 0.035
-        }, 2.8);
+        }, 2.0);
 
         // Final fade-out — final-scene rule; overlay handoff to real DOM text.
         tl.to('[data-composition-id="hero-text"] #content', {

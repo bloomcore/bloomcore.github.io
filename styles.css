@@ -367,3 +367,18 @@ h1 { font-size: 3.5rem; line-height: 1.1; }
     /* This filter turns any black logo into white to match dark mode */
     filter: grayscale(100%) brightness(0) invert(1);
 }
+
+/* Feature-maturity pills — see website_update_plan.md */
+.pill {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-weight: 600;
+}
+.pill.preview { background: rgba(255, 215, 0, 0.15); color: var(--brand-yellow); }
+.pill.roadmap { background: rgba(176, 176, 176, 0.15); color: var(--text-gray); }

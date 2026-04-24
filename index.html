@@ -72,6 +72,10 @@
             border: 1px solid #222;
             position: relative;
             text-align: center;
+            transition: border-color 0.3s;
+        }
+        .workflow-step:hover {
+            border-color: var(--brand-yellow);
         }
         .workflow-step:first-child {
             border-radius: 8px 0 0 8px;
@@ -91,6 +95,10 @@
             border-bottom: 12px solid transparent;
             border-left: 12px solid #333;
             z-index: 2;
+            transition: border-left-color 0.3s;
+        }
+        .workflow-step:hover:not(:last-child)::after {
+            border-left-color: var(--brand-yellow);
         }
         .workflow-step .step-number {
             font-size: 0.7rem;
@@ -263,18 +271,18 @@
                autoplay muted playsinline
                aria-hidden="true"></video>
         <div class="hero-content">
-            <h1>Stop rebuilding structural models from scratch</h1>
-            <p>Turn architect models into analysis-ready structures and reuse any past project instantly. Iterate, run FEA and optimize in minutes.</p>
+            <h1>Change the model — everything downstream updates.</h1>
+            <p>Polaris cascades a model change through FEA, Eurocode compliance and auditable calculation reports — in minutes.</p>
             <a href="contact.html" class="btn-white" style="margin-right: 15px;">Book a Demo</a>
             <a href="https://polaris.bloomcorelabs.com" target="_blank" class="btn-black">Try Polaris</a>
         </div>
     </header>
 
     <!-- Polaris Demo Section -->
-    <section class="section-padding bg-darker" style="padding-bottom: 0;">
+    <section class="section-padding" style="padding-bottom: 0;">
         <div class="container text-center">
             <h2>Polaris in Action</h2>
-            <p class="subtitle">Full structural analysis pipeline — from prompt or IFC import to optimized design.</p>
+            <p class="subtitle">Full structural analysis pipeline — from design to auditable calculation report.</p>
 
             <div class="demo-wrapper">
                 <div class="demo-header">
@@ -303,7 +311,7 @@
     <section class="section-padding">
         <div class="container">
             <h2 class="text-center">How Polaris Works</h2>
-            <p class="subtitle text-center">The full structural design pipeline, orchestrated end-to-end.</p>
+            <p class="subtitle text-center">AI-orchestrated structural design pipeline — built on a physics engine, not a chatbot.</p>
 
             <div class="workflow-pipeline">
                 <div class="workflow-step">
@@ -333,8 +341,8 @@
                 </div>
                 <div class="workflow-step">
                     <div class="step-number">Step 6</div>
-                    <h4>Reports & Drafting</h4>
-                    <p>Calculation reports and construction-ready documentation.</p>
+                    <h4>Calculation Reports</h4>
+                    <p>Auditable PDF reports with load cases, utilization ratios and code references.</p>
                 </div>
             </div>
             <div class="workflow-loop">
@@ -343,8 +351,37 @@
         </div>
     </section>
 
+    <!-- Engineer in the Loop -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center">Engineer in the Loop</h2>
+            <p class="subtitle text-center">Polaris doesn't replace engineering judgment. It orchestrates the iteration-heavy work that sits around it.</p>
+
+            <div class="usecase-grid" style="margin-top: 40px;">
+                <div class="usecase-card">
+                    <div class="usecase-label">You retain</div>
+                    <ul>
+                        <li>Modelling assumptions and boundary-condition choices</li>
+                        <li>Load-path interpretation and code-clause application</li>
+                        <li>Safety judgment and professional sign-off (CEng, MIStructE, equivalent)</li>
+                        <li>Design decisions between the alternatives Polaris proposes</li>
+                    </ul>
+                </div>
+                <div class="usecase-card">
+                    <div class="usecase-label">Polaris handles</div>
+                    <ul>
+                        <li>Meshing, solving and running FEA iterations on CalculiX</li>
+                        <li>Cross-referencing every element against Eurocode 2/3 (and 7 for geotechnical work)</li>
+                        <li>Propagating a model change through analysis, compliance checks and calculation reports</li>
+                        <li>Assembling the auditable PDF with load cases, utilization ratios and code references</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Who It's For -->
-    <section class="section-padding bg-darker">
+    <section class="section-padding">
         <div class="container">
             <h2 class="text-center">Who It's For</h2>
             <p class="subtitle text-center">From small firms to enterprise engineering teams.</p>
@@ -355,7 +392,7 @@
                     <h4>Shorten iteration cycles from hours to minutes</h4>
                     <ul>
                         <li>Run full FEA in the cloud — no local compute bottleneck</li>
-                        <li>Iterate sections, materials, and reinforcement interactively</li>
+                        <li>Iterate sections, materials and reinforcement interactively</li>
                         <li>Eurocode compliance checks built into every analysis run</li>
                         <li>Calculation-ready reports for regulatory submission</li>
                     </ul>
@@ -378,16 +415,15 @@
     <section class="section-padding">
         <div class="container">
             <h2 class="text-center">Why Polaris</h2>
-            <p class="subtitle text-center">What changes when you stop rebuilding models and start iterating in minutes.</p>
 
             <div class="value-grid">
                 <div class="value-card">
-                    <div class="value-icon">&#128736;</div>
+                    <div class="value-icon">&#8856;</div>
                     <h4>No More Rebuilds</h4>
                     <p>Turn architect models into analysis-ready structural models automatically.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">&#128269;</div>
+                    <div class="value-icon">&#10227;</div>
                     <h4>Reuse Past Projects</h4>
                     <p>Find any model in seconds using natural language. Open in 3D and keep working.</p>
                 </div>
@@ -407,7 +443,7 @@
                     <p>EN 1990/1991/1992/1993 compliance checked on every run.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">&#128196;</div>
+                    <div class="value-icon">&#9636;</div>
                     <h4>IFC Native</h4>
                     <p>Works with your existing models. Import from Revit, Tekla, or BlenderBIM.</p>
                 </div>
@@ -417,7 +453,7 @@
                     <p>Scales on demand. Run from any device, no installation required.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">&#128203;</div>
+                    <div class="value-icon">&#9635;</div>
                     <h4>Auditable Outputs</h4>
                     <p>Full calculation reports with load cases, utilization ratios, and code references.</p>
                 </div>
@@ -426,7 +462,7 @@
     </section>
 
     <!-- Traction & Trust -->
-    <section class="section-padding bg-darker text-center">
+    <section class="section-padding text-center">
         <div class="container">
             <p class="text-gray" style="margin-top: 30px; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;">Backed by <a href="https://www.antler.co" target="_blank" style="font-weight: 700; color: white; text-decoration: none;">Antler</a></p>
         </div>
