@@ -109,33 +109,6 @@ h1 { font-size: 3.5rem; line-height: 1.1; }
 .hero h1 { font-size: clamp(1.8rem, calc(7.68vw - 9.6px), 3.5rem); }
 .hero-content p { font-size: clamp(1rem, calc(2.96vw - 3.7px), 1.35rem); color: var(--text-white); }
 
-/* VIDEO DEMO SECTION */
-.demo-wrapper {
-    position: relative; max-width: 1000px; margin: 60px auto;
-    border: 1px solid #333; border-radius: 12px; overflow: hidden;
-    background: #000; box-shadow: 0 0 50px rgba(255, 215, 0, 0.1);
-}
-.demo-header {
-    background: #111; padding: 10px 20px; border-bottom: 1px solid #333;
-    display: flex; justify-content: space-between; align-items: center;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #666;
-}
-.demo-dots { display: flex; gap: 6px; }
-.demo-dot { width: 10px; height: 10px; border-radius: 50%; background-color: #333; }
-.video-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
-.demo-video { width: 100%; height: 100%; object-fit: contain; }
-.speed-badge {
-    position: absolute; top: 20px; right: 20px;
-    background: rgba(255, 215, 0, 0.9); color: black;
-    padding: 5px 10px; border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.8rem;
-    z-index: 10; border: 1px solid white;
-}
-.overlay-gradient {
-    position: absolute; bottom: 0; left: 0; width: 100%; height: 100px;
-    background: linear-gradient(to top, #000 0%, transparent 100%); pointer-events: none;
-}
-
 /* CARDS & GRIDS */
 .card {
     background: linear-gradient(180deg, rgba(255, 215, 0, 0.05) 0%, rgba(0,0,0,0) 100%);

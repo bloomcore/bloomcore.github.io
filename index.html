@@ -278,35 +278,6 @@
         </div>
     </header>
 
-    <!-- Polaris Demo Section -->
-    <section class="section-padding" style="padding-bottom: 0;">
-        <div class="container text-center">
-            <h2>Polaris in Action</h2>
-            <p class="subtitle">Full structural analysis pipeline — from design to auditable calculation report.</p>
-
-            <div class="demo-wrapper">
-                <div class="demo-header">
-                    <div class="demo-dots">
-                        <div class="demo-dot" style="background:#FF5F56"></div>
-                        <div class="demo-dot" style="background:#FFBD2E"></div>
-                        <div class="demo-dot" style="background:#27C93F"></div>
-                    </div>
-                    <div>Polaris — Structural Optimization</div>
-                    <div>REC ●</div>
-                </div>
-
-                <div class="video-container">
-                    <div class="speed-badge">Polaris</div>
-                    <video id="feature-video" class="demo-video" autoplay muted loop playsinline>
-                        <source src="demo_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="overlay-gradient"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- The Polaris Workflow -->
     <section class="section-padding">
         <div class="container">
@@ -486,18 +457,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const video = document.getElementById('feature-video');
-            if(video) {
-                video.playbackRate = 1.5;
-                video.addEventListener('play', function() {
-                    this.playbackRate = 1.5;
-                });
-            }
-        });
-    </script>
-
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('open');
