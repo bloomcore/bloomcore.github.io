@@ -39,6 +39,10 @@
             z-index: 2;
             pointer-events: none;
             border: 0;
+            /* Safari fallback: VP9-alpha in .webm renders opaque (black) in
+               Safari. Screen blend makes black pixels transparent so the
+               overlay composites correctly without alpha support. */
+            mix-blend-mode: screen;
         }
         .hero-content {
             opacity: 0;
