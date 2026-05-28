@@ -12,8 +12,8 @@ The hero background on `index.html` plays `hf-intro/intro.mp4` via a native `<vi
 
 ```bash
 cd hf-intro
-npx hyperframes lint
-npx hyperframes render -o intro.mp4    # ~3 min; default quality ≈ 8.5 Mbps (too heavy)
+hyperframes lint
+hyperframes render -o intro.mp4    # ~3 min; default quality ≈ 8.5 Mbps (too heavy)
 
 # Recompress for web (≈5× smaller at visually indistinguishable quality for noisy/grainy content)
 ffmpeg -y -i intro.mp4 -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p \
@@ -28,7 +28,7 @@ Why each flag:
 - `-movflags +faststart` — moves the moov atom to the front so playback starts before the whole file downloads.
 - `-an` — strip audio (our compositions have none; container may still carry silence).
 
-The `--video-bitrate` and `--crf` flags on `npx hyperframes render` are unreliable in the current version — treat ffmpeg recompress as the way to hit a target size.
+The `--video-bitrate` and `--crf` flags on `hyperframes render` are unreliable in the current version — treat ffmpeg recompress as the way to hit a target size.
 
 ### Editing the composition
 
@@ -49,8 +49,8 @@ Separate composition that renders a WebM with alpha, overlaid on top of `hf-intr
 
 ```bash
 cd hf-hero-text
-npx hyperframes lint
-npx hyperframes render --format webm -o intro.webm
+hyperframes lint
+hyperframes render --format webm -o intro.webm
 ```
 
 Without `--format webm`, HyperFrames renders H.264/yuv420p into the `.webm` container regardless of the `-o` extension — the file plays with an opaque background and hides the hero video beneath it. Verify alpha after render:

@@ -27,31 +27,27 @@
 
         <div class="scene-content">
             <h1 class="headline">
-                <span class="w">Change</span>
-                <span class="w">the</span>
-                <span class="w">model</span>
-                <span class="w">&mdash;</span>
-                <span class="w">everything</span>
-                <span class="w">downstream</span>
-                <span class="w">updates.</span>
+                <span class="w">A</span>
+                <span class="w">physics</span>
+                <span class="w">engine.</span>
+                <span class="w">With</span>
+                <span class="w">AI</span>
+                <span class="w">on</span>
+                <span class="w">top.</span>
             </h1>
             <p class="subhead">
                 <span class="w">Polaris</span>
-                <span class="w">cascades</span>
-                <span class="w">a</span>
-                <span class="w">model</span>
-                <span class="w">change</span>
-                <span class="w">through</span>
-                <span class="w">FEA,</span>
-                <span class="w">Eurocode</span>
-                <span class="w">compliance</span>
-                <span class="w">and</span>
-                <span class="w">auditable</span>
-                <span class="w">calculation</span>
-                <span class="w">reports</span>
-                <span class="w">&mdash;</span>
-                <span class="w">in</span>
-                <span class="w">minutes.</span>
+                <span class="w">orchestrates</span>
+                <span class="w">real</span>
+                <span class="w">engineering</span>
+                <span class="w">work</span>
+                <span class="w">with</span>
+                <span class="w">proven</span>
+                <span class="w">engineering</span>
+                <span class="w">tools.</span>
+                <span class="w">Engineers</span>
+                <span class="w">still</span>
+                <span class="w">judge.</span>
             </p>
             <!-- Invisible spacer reserving the vertical real estate where the
                  live site's two CTA buttons sit (46px button row + 20px
@@ -81,16 +77,16 @@
         }
 
         /* The overlay element in index.html is positioned + sized to exactly
-           match .hero-content (bottom: 80px, left: 60px, max-width: 700px,
-           aspect-ratio 16/9). Inside that ~700×394 display box the 1920×1080
-           composition scales by ~0.365 (700/1920), so for DISPLAY sizes to
+           match .hero-content (bottom: 80px, left: 60px, max-width: 1200px,
+           aspect-ratio 16/9). Inside that ~1200×675 display box the 1920×1080
+           composition scales by ~0.625 (1200/1920), so for DISPLAY sizes to
            match real CSS:
-               headline 56px / 0.365 ≈ 153px ≈ 8vw
-               subhead  22px / 0.365 ≈  60px ≈ 3.1vw
-           A button-spacer reserves the 76px real-button footprint: button
-           row is 56px (15px padding + 25.6px line-height × 16px font + 15px
-           padding) plus 20px margin-top.
-               76px / 0.365 ≈ 208px ≈ 11vw
+               headline 56px / 0.625 ≈ 90px ≈ 4.7vw
+               subhead  22px / 0.625 ≈ 35px ≈ 1.8vw
+           A button-spacer reserves the 77.6px real-button footprint: button
+           row is 57.6px (15px padding + 25.6px line-height × 16px font + 15px
+           padding + 2px .btn-black border) plus 20px margin-top.
+               77.6px / 0.625 ≈ 124px ≈ 6.467vw
            Everything flex-ends to the bottom, matching the live layout —
            so overlay <p> bottom lands on top of real <p> bottom at handoff. */
         [data-composition-id="hero-text"] .scene-content {
@@ -110,7 +106,7 @@
            (h1 has -0.5px absolute letter-spacing → -0.5/56 ≈ -0.0089em at
            56px display; body's line-height 1.6 is inherited by the p). */
         [data-composition-id="hero-text"] .headline {
-            font-size: 8vw;         /* 8 × 19.2 × (700/1920) = 56.00 px display */
+            font-size: 4.6667vw;    /* 4.6667 × 19.2 × (1200/1920) = 56.00 px display */
             font-weight: 700;
             letter-spacing: -0.0089em;
             line-height: 1.1;
@@ -120,7 +116,7 @@
         }
 
         [data-composition-id="hero-text"] .subhead {
-            font-size: 3.086vw;     /* 3.086 × 19.2 × (700/1920) = 21.60 px display */
+            font-size: 1.8vw;       /* 1.8 × 19.2 × (1200/1920) = 21.60 px display */
             font-weight: 400;
             line-height: 1.6;
             color: #ffffff;
@@ -130,7 +126,7 @@
 
         [data-composition-id="hero-text"] .button-spacer {
             width: 100%;
-            height: 11vw;
+            height: 6.467vw;
             flex-shrink: 0;
         }
 
@@ -168,7 +164,7 @@
         // Final fade-out — final-scene rule; overlay handoff to real DOM text.
         tl.to('[data-composition-id="hero-text"] #content', {
             opacity: 0,
-            duration: 0.6,
+            duration: 0.3,
             ease: 'power2.in'
         }, 4.3);
 

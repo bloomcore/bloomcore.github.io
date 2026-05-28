@@ -13,7 +13,7 @@
        hero-text intro overlay in index.html so the two stay in sync. */
     --hero-content-bottom: 80px;
     --hero-content-left: 60px;
-    --hero-content-max-width: 700px;
+    --hero-content-max-width: 1200px;
 }
 
 * {
@@ -102,12 +102,14 @@ h1 { font-size: 3.5rem; line-height: 1.1; }
 .hero-content { position: absolute; bottom: var(--hero-content-bottom); left: var(--hero-content-left); max-width: var(--hero-content-max-width); z-index: 2; }
 /* Fluid h1 / p sizes track the hero-text WebM overlay's scaling so the two
    match across viewport widths (and so mobile landscape doesn't overflow).
-   Overlay display scale = min(700, hero - 120) / 1920 where hero = 0.96 * vw.
-   Solving for the fluid middle:
-     h1  display = 56px × overlay_scale ⇒ 7.68vw − 9.6px (bounded to 3.5rem above V≈854)
-     p   display = 21.6px × overlay_scale ⇒ 2.96vw − 3.7px (bounded to 1.35rem) */
-.hero h1 { font-size: clamp(1.8rem, calc(7.68vw - 9.6px), 3.5rem); }
-.hero-content p { font-size: clamp(1rem, calc(2.96vw - 3.7px), 1.35rem); color: var(--text-white); }
+   Overlay display width = min(1200, V - 120). Below V=1320 it scales with
+   viewport; above, it caps at 1200px wide. Solving for the fluid middle:
+     h1  display = 4.6667vw_comp × 19.2 × (V-120)/1920 ⇒ 4.6667vw − 5.6px
+                   (bounded to 3.5rem above V≈1320)
+     p   display = 1.8vw_comp × 19.2 × (V-120)/1920 ⇒ 1.8vw − 2.16px
+                   (bounded to 1.35rem above V≈1320) */
+.hero h1 { font-size: clamp(1.8rem, calc(4.6667vw - 5.6px), 3.5rem); }
+.hero-content p { font-size: clamp(1rem, calc(1.8vw - 2.16px), 1.35rem); color: var(--text-white); }
 
 /* CARDS & GRIDS */
 .card {
