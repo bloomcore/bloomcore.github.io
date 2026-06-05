@@ -119,6 +119,33 @@
             line-height: 1.7;
             max-width: 700px;
         }
+
+        /* Team LinkedIn link */
+        .team-linkedin {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            margin-top: 14px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--text-gray);
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .team-linkedin:hover {
+            color: var(--brand-yellow);
+            border-color: var(--brand-yellow);
+        }
+        /* LinkedIn glyph defined once, painted via currentColor mask */
+        .team-linkedin::before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            background-color: currentColor;
+            -webkit-mask: var(--icon-linkedin) center / contain no-repeat;
+            mask: var(--icon-linkedin) center / contain no-repeat;
+        }
     </style>
 </head>
 <body>
@@ -161,14 +188,16 @@
                     <img src="kobby.png" alt="Kwabena Atobra">
                     <div class="team-name">Kwabena Atobra</div>
                     <div class="team-role">CEO & Co-Founder</div>
-                    <p class="text-gray text-xs mt-4">Engineer & FEA Specialist. PhD Candidate in Computational Seismology, University of Helsinki. MSc ETH Zurich.</p>
+                    <p class="text-gray text-sm mt-4">Engineer & FEA Specialist. PhD Candidate in Computational Seismology, University of Helsinki. MSc ETH Zurich.</p>
+                    <a href="https://www.linkedin.com/in/kwabena-mensah-atobra-9407a668/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Kwabena Atobra on LinkedIn"></a>
                 </div>
                 <!-- Eugene -->
                 <div class="team-member">
                     <img src="eugene.png" alt="Eugene Zhukov">
                     <div class="team-name">Eugene Zhukov</div>
                     <div class="team-role">CTO & Co-Founder</div>
-                    <p class="text-gray text-xs mt-4">20+ years in software engineering (Airbus, Nokia, Ericsson, F-Secure). MBA Henley Business School.</p>
+                    <p class="text-gray text-sm mt-4">20+ years in software engineering (Airbus, Nokia, Ericsson, F-Secure). MBA Henley Business School.</p>
+                    <a href="https://www.linkedin.com/in/eugenezhukov/" target="_blank" rel="noopener" class="team-linkedin" aria-label="Eugene Zhukov on LinkedIn"></a>
                 </div>
             </div>
         </div>
@@ -188,9 +217,9 @@
     <footer class="footer section-padding text-center">
         <div class="container">
             <div class="footer-bottom">
-                <div class="copyright text-gray text-xs">&copy; 2026 Bloomcore Labs. Helsinki, Finland.</div>
+                <div class="copyright text-gray text-xs">&copy; 2026 Bloomcore Labs. Espoo, Finland.</div>
                 <div class="socials text-gray">
-                    <a href="https://www.linkedin.com/company/bloomcore-labs" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn</a>
+                    <a href="https://www.linkedin.com/company/bloomcore-labs" target="_blank" class="social-icon" aria-label="Bloomcore Labs on LinkedIn"></a>
                 </div>
             </div>
         </div>
