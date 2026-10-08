@@ -240,6 +240,37 @@
             color: var(--text-gray);
             margin-top: 5px;
         }
+
+        /* FAQ section */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+        .faq-item {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 25px;
+            transition: border-color 0.3s;
+            text-align: left;
+        }
+        .faq-item:hover {
+            border-color: var(--brand-green);
+        }
+        .faq-item h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        .faq-item p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -435,6 +466,39 @@
             </div>
         </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How do I begin?</h4>
+                    <p>Just upload your IFC model. The agent will guide you through the process, from specifying load parameters to running a complete finite element analysis.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I use my own AI agent?</h4>
+                    <p>Yes. Polaris provides a standard Model Context Protocol (MCP) server. You can connect Claude, ChatGPT, or your own custom MCP-compatible agent to utilize visualization, IFC modification and analysis capabilities.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is my project data used to train AI models?</h4>
+                    <p>No, the data remains under your control and is never used to train or fine-tune models. For strict data sovereignty requirements, we also offer private cloud (VPC) and on-premises deployments.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What design standards and formats does Polaris support?</h4>
+                    <p>Polaris works natively with IFC models and calculates load combinations and serviceability checks against Eurocode standards (EN 1990-1999). Results can be exported as structured PDF reports, XLSX tables and optimized IFC files.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is Polaris tied to a specific language model?</h4>
+                    <p>No, Polaris is LLM-agnostic. The platform's modular architecture means you aren't locked into a single provider, allowing you to leverage the language model that best fits your organization's capabilities and privacy requirements.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I need a powerful workstation to run it?</h4>
+                    <p>Not at all. Polaris is device-agnostic and cloud-native. All the heavy computation, including finite element analysis (FEA) and 3D processing, is handled in the cloud, allowing you to interact with massive structural models from any device with a standard web browser.</p>
+                </div>
+                </div>
+                </div>
+                </section>
 
     <!-- Traction & Trust -->
     <section class="section-padding text-center">
