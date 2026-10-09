@@ -477,16 +477,20 @@
                     <p>Just upload your IFC model. The agent will guide you through the process, from specifying load parameters to running a complete finite element analysis.</p>
                 </div>
                 <div class="faq-item">
+                    <h4>Does AI perform the actual calculations?</h4>
+                    <p>No. Polaris does not use AI to guess physics. AI acts as an orchestration layer to extract design intent. The actual math relies on a deterministic Eurocode cascade, the finite element analysis (FEA) runs on proven open-source solvers like CalculiX and Gmsh. The engineer remains in the loop to confirm parameters and validate the results.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What design standards and formats does Polaris support?</h4>
+                    <p>Polaris works natively with IFC models and calculates load combinations and serviceability checks against Eurocode standards (EN 1990-1999). Results can be exported as structured PDF reports, XLSX tables and optimized IFC files.</p>
+                </div>
+                <div class="faq-item">
                     <h4>Can I use my own AI agent?</h4>
                     <p>Yes. Polaris provides a standard Model Context Protocol (MCP) server. You can connect Claude, ChatGPT, or your own custom MCP-compatible agent to utilize visualization, IFC modification and analysis capabilities.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Is my project data used to train AI models?</h4>
                     <p>No, the data remains under your control and is never used to train or fine-tune models. For strict data sovereignty requirements, we also offer private cloud (VPC) and on-premises deployments.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What design standards and formats does Polaris support?</h4>
-                    <p>Polaris works natively with IFC models and calculates load combinations and serviceability checks against Eurocode standards (EN 1990-1999). Results can be exported as structured PDF reports, XLSX tables and optimized IFC files.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Is Polaris tied to a specific language model?</h4>
